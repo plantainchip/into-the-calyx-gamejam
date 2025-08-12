@@ -1,11 +1,11 @@
 import "kaplay/global";
-import sectionholes from "./sectionholes";
+import sectionshovel from "./sectionshovel";
 
 export default function(){
-    scene("sectionholes", sectionholes);
+    scene("sectionshovel", sectionshovel);
 
     loadSprite("background", "sprites/assets/backgrounds/background1_moonlight.png");
-    loadSprite("area_shovel", "sprites/assets/sections/section_shovel.png");
+    loadSprite("area_holes", "sprites/assets/sections/section_holes.png");
     loadSprite("player", "sprites/assets/characters/player.png");
 
     let SPEED = 75;
@@ -14,72 +14,23 @@ export default function(){
     const moon_bg = add([
         sprite("background"), 
         pos(0,0),
-        // body({isStatic:true})
     ]);
 
     add([
-        sprite("area_shovel"), 
+        sprite("area_holes"), 
         pos(0,0),
         body({isStatic:true})
     ]);
 
     // adding platform ====================================
     add([
-        rect(750, 32),
+        rect(700, 32),
         pos(-50,112),
         color(99,155,255),
-        opacity(0),
+        opacity(0.5),
         area(),
         body({isStatic:true}),
     ])
-
-    add([
-        rect(32, 16),
-        pos(96, 96),
-        color(99,155,255),
-        opacity(0),
-        area(),
-        body({isStatic:true}),
-    ]);
-
-    add([
-        rect(32, 32),
-        pos(144, 80),
-        color(99,155,255),
-        opacity(0),
-        area(),
-        body({isStatic:true}),
-    ]);
-
-    add([
-        rect(32, 16),
-        pos(224, 96),
-        color(99,155,255),
-        opacity(0),
-        area(),
-        body({isStatic:true}),
-    ]);
-
-    add([
-        rect(16, 16),
-        pos(400, 96),
-        color(99,155,255),
-        opacity(0),
-        area(),
-        body({isStatic:true}),
-    ]);
-
-    add([
-        rect(128, 48),
-        pos(416, 64),
-        color(99,155,255),
-        opacity(0),
-        area(),
-        body({isStatic:true}),
-    ]);
-
-
-
 
 
     // adding player ======================================
@@ -93,14 +44,12 @@ export default function(){
 
     onKeyDown("d", () => {
         player.move(SPEED, 0);
-        if (player.pos.x > 639) {
-            go("sectionholes");
-        }
     });
+    
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
         if (player.pos.x < -12) {
-            go("backyard");
+            go("sectionshovel");
         }
     });
     onKeyPress("w", () => {
