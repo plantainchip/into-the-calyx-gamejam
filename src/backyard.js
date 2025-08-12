@@ -1,6 +1,9 @@
 import "kaplay/global";
+import sectionshovel from "./sectionshovel";
 
 export default function(){
+    scene("sectionshovel", sectionshovel);
+    
     // you can start making your scene in this function.
     loadSprite("background", "sprites/assets/backgrounds/background1_moonlight.png");
     loadSprite("backyard", "sprites/assets/sections/section1_backyard.png");
@@ -44,13 +47,13 @@ export default function(){
 
         // go to next section
         if (player.pos.x > 160) {
-            go("main");
+            go("sectionshovel");
         }
     });
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
         if (player.pos.x < -12) {
-            go("main");
+            go("backyard");
         }
     });
     onKeyPress("w", () => {
@@ -59,7 +62,6 @@ export default function(){
         // }
         player.doubleJump(330)
     });
-
 
 
 

@@ -23,5 +23,9 @@ kaplay({
     scale:3
 })
 
-scene("main", backyardscene);
-go("main");
+// scene("backyard", backyardscene);
+// go("backyard");
+
+import sectionshovel from "./sectionshovel";
+scene("sectionshovel", sectionshovel);
+go("sectionshovel");
