@@ -12,10 +12,10 @@ kaplay({
 // scene("backyard", backyardscene);
 // go("backyard");
 
-import sectionholes from "./sectionholes";
-scene("sectionholes", sectionholes);
-go("sectionholes");
+// import sectionholes from "./sectionholes";
+// scene("sectionholes", sectionholes);
+// go("sectionholes");
 
-// import sectionshovel from "./sectionshovel";
-// scene("sectionshovel", sectionshovel);
-// go("sectionshovel");
+import sectionshovel from "./sectionshovel";
+scene("sectionshovel", sectionshovel);
+go("sectionshovel");

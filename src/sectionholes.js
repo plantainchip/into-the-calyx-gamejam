@@ -1,8 +1,10 @@
 import "kaplay/global";
 import sectionshovel from "./sectionshovel";
+import sectionunderground from "./sectionunderground";
 
 export default function(){
     scene("sectionshovel", sectionshovel);
+    scene("sectionunderground", sectionunderground);
 
     loadSprite("background", "sprites/assets/backgrounds/background1_moonlight.png");
     loadSprite("area_holes", "sprites/assets/sections/section_holes.png");
@@ -24,8 +26,87 @@ export default function(){
 
     // adding platform ====================================
     add([
-        rect(700, 32),
+        rect(146, 32),
         pos(-50,112),
+        color(99,155,255),
+        opacity(0.5),
+        area(),
+        body({isStatic:true}),
+    ])
+
+    add([
+        rect(256, 32),
+        pos(144,112),
+        color(99,155,255),
+        opacity(0.5),
+        area(),
+        body({isStatic:true}),
+    ])
+
+    add([
+        rect(48, 16),
+        pos(192,96),
+        color(99,155,255),
+        opacity(0.5),
+        area(),
+        body({isStatic:true}),
+    ])
+
+    add([
+        rect(16,16),
+        pos(288,96),
+        color(99,155,255),
+        opacity(0.5),
+        area(),
+        body({isStatic:true}),
+    ])
+    add([
+        rect(32,32),
+        pos(304,80),
+        color(99,155,255),
+        opacity(0.5),
+        area(),
+        body({isStatic:true}),
+    ])
+    add([
+        rect(48,32),
+        pos(432,112),
+        color(99,155,255),
+        opacity(0.5),
+        area(),
+        body({isStatic:true}),
+    ])
+
+    add([
+        rect(80,32),
+        pos(512,112),
+        color(99,155,255),
+        opacity(0.5),
+        area(),
+        body({isStatic:true}),
+    ])
+
+    add([
+        rect(32,32),
+        pos(544,80),
+        color(99,155,255),
+        opacity(0.5),
+        area(),
+        body({isStatic:true}),
+    ])
+
+    add([
+        rect(32,32),
+        pos(608,112),
+        color(99,155,255),
+        opacity(0.5),
+        area(),
+        body({isStatic:true}),
+    ])
+
+    add([
+        rect(32,112),
+        pos(624,0),
         color(99,155,255),
         opacity(0.5),
         area(),
@@ -45,7 +126,6 @@ export default function(){
     onKeyDown("d", () => {
         player.move(SPEED, 0);
     });
-    
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
         if (player.pos.x < -12) {
@@ -75,6 +155,14 @@ export default function(){
         }
         
     })
+
+    player.onUpdate(() => {
+        if (player.pos.x < 480 || player.pos.x > 511){
+            if (player.pos.y > height()) {
+                go("sectionunderground");
+            }
+        }
+    });
 
 
 }

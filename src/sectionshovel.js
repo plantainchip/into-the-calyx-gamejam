@@ -1,12 +1,15 @@
 import "kaplay/global";
 import sectionholes from "./sectionholes";
+import backyard from "./backyard";
 
 export default function(){
     scene("sectionholes", sectionholes);
+    scene("backyard", backyard);
 
     loadSprite("background", "sprites/assets/backgrounds/background1_moonlight.png");
     loadSprite("area_shovel", "sprites/assets/sections/section_shovel.png");
     loadSprite("player", "sprites/assets/characters/player.png");
+    loadSprite("middle", "sprites/assets/backgrounds/bg_mid.png");
 
     let SPEED = 75;
     setGravity(1850);
@@ -16,6 +19,12 @@ export default function(){
         pos(0,0),
         // body({isStatic:true})
     ]);
+
+    const middle = add([
+        sprite("middle"), 
+        pos(0,0),
+    ]);
+
 
     add([
         sprite("area_shovel"), 
@@ -93,12 +102,25 @@ export default function(){
 
     onKeyDown("d", () => {
         player.move(SPEED, 0);
+
+        //for parallax effect
+        if(player.pos.x < 544){
+            if(player.pos.x >= original_cam_posx + 48){
+                middle.pos.x = middle.pos.x - 0.03
+            }
+        }
         if (player.pos.x > 639) {
             go("sectionholes");
         }
     });
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
+        //for parallax effect
+        if(player.pos.x < 544){
+            if(player.pos.x >= original_cam_posx + 48){
+                middle.pos.x = middle.pos.x + 0.01
+            }
+        }
         if (player.pos.x < -12) {
             go("backyard");
         }
@@ -115,7 +137,6 @@ export default function(){
     const original_cam_posx = player.pos.x;
     // debug.log("original cam pos x: " + original_cam_posx);
     player.onUpdate(() => {
-        
         // first if statement to stop cam at end of section
         if ( player.pos.x < 544){
             // 2nd if statement to move cam with player
@@ -124,8 +145,16 @@ export default function(){
                 moon_bg.pos.x = player.pos.x - 64;
             }
         }
-        
     })
+
+    // parallax effect - middle layer
+    // player.onUpdate(() => {
+    //     if(player.pos.x < 544){
+    //         if(player.pos.x >= original_cam_posx + 48){
+    //             middle.pos.x = middle.pos.x - 0.1
+    //         }
+    //     }
+    // })
 
 
 }
