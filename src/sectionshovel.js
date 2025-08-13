@@ -2,7 +2,7 @@ import "kaplay/global";
 import sectionholes from "./sectionholes";
 import backyard from "./backyard";
 
-export default function(){
+export default function(STATE){
     scene("sectionholes", sectionholes);
     scene("backyard", backyard);
 
@@ -10,6 +10,8 @@ export default function(){
     loadSprite("area_shovel", "sprites/assets/sections/section_shovel.png");
     loadSprite("player", "sprites/assets/characters/player.png");
     loadSprite("middle", "sprites/assets/backgrounds/bg_mid.png");
+
+    loadSprite("shovel", "sprites/assets/items/shovel.png");
 
     let SPEED = 75;
     setGravity(1850);
@@ -20,10 +22,10 @@ export default function(){
         // body({isStatic:true})
     ]);
 
-    const middle = add([
-        sprite("middle"), 
-        pos(0,0),
-    ]);
+    // const middle = add([
+    //     sprite("middle"), 
+    //     pos(0,0),
+    // ]);
 
 
     add([
@@ -102,27 +104,14 @@ export default function(){
 
     onKeyDown("d", () => {
         player.move(SPEED, 0);
-
-        //for parallax effect
-        if(player.pos.x < 544){
-            if(player.pos.x >= original_cam_posx + 48){
-                middle.pos.x = middle.pos.x - 0.03
-            }
-        }
         if (player.pos.x > 639) {
-            go("sectionholes");
+            go("sectionholes", STATE);
         }
     });
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
-        //for parallax effect
-        if(player.pos.x < 544){
-            if(player.pos.x >= original_cam_posx + 48){
-                middle.pos.x = middle.pos.x + 0.01
-            }
-        }
         if (player.pos.x < -12) {
-            go("backyard");
+            go("backyard", STATE);
         }
     });
     onKeyPress("w", () => {
@@ -155,6 +144,25 @@ export default function(){
     //         }
     //     }
     // })
+
+    // items =======================================
+
+    if (!STATE.shovel_item.collected) {
+        const shovelitem = add([
+            sprite("shovel"),
+            pos(80,96),
+            body(),
+            area(),
+            z(2),
+            "shovel_item"
+        ])
+    }
+
+    player.onCollide("shovel_item", (shovel) => {
+        shovel.destroy();
+        STATE.shovel_item.collected = true;
+        console.log("Collected shovel");
+    })
 
 
 }

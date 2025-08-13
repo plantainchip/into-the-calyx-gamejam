@@ -1,7 +1,9 @@
 import "kaplay/global";
 import sectionshovel from "./sectionshovel";
 
-export default function(){
+
+
+export default function(STATE){
     scene("sectionshovel", sectionshovel);
     
     // you can start making your scene in this function.
@@ -47,19 +49,16 @@ export default function(){
 
         // go to next section
         if (player.pos.x > 160) {
-            go("sectionshovel");
+            go("sectionshovel", STATE);
         }
     });
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
         if (player.pos.x < -12) {
-            go("backyard");
+            go("backyard", STATE);
         }
     });
     onKeyPress("w", () => {
-        // if( player.isGrounded()) {
-        //     player.jump(330);
-        // }
         player.doubleJump(330)
     });
 

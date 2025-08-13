@@ -9,13 +9,31 @@ kaplay({
     scale:3
 })
 
-// scene("backyard", backyardscene);
-// go("backyard");
+const STATE = {
+  flowers: [],
+  cave_flower: {
+    collected: false
+  },
+  shovel_item: {
+    collected: false
+  }
+}
+
+scene("backyard", backyardscene);
+go("backyard", STATE);
+
+// import sectionshovel from "./sectionshovel";
+// scene("sectionshovel", sectionshovel);
+// go("sectionshovel", STATE);
 
 // import sectionholes from "./sectionholes";
 // scene("sectionholes", sectionholes);
 // go("sectionholes");
 
-import sectionshovel from "./sectionshovel";
-scene("sectionshovel", sectionshovel);
-go("sectionshovel");
+// import sectionunderground from "./sectionunderground";
+// scene("sectionunderground", sectionunderground);
+// go("sectionunderground");
+
+// import sectionflowercave from "./sectionflowercave";
+// scene("sectionflowercave", sectionflowercave);
+// go("sectionflowercave", STATE);

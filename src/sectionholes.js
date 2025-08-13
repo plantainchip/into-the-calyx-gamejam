@@ -2,7 +2,7 @@ import "kaplay/global";
 import sectionshovel from "./sectionshovel";
 import sectionunderground from "./sectionunderground";
 
-export default function(){
+export default function(STATE){
     scene("sectionshovel", sectionshovel);
     scene("sectionunderground", sectionunderground);
 
@@ -129,7 +129,7 @@ export default function(){
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
         if (player.pos.x < -12) {
-            go("sectionshovel");
+            go("sectionshovel",STATE);
         }
     });
     onKeyPress("w", () => {
@@ -156,13 +156,17 @@ export default function(){
         
     })
 
+    // transition to underground section
     player.onUpdate(() => {
         if (player.pos.x < 480 || player.pos.x > 511){
             if (player.pos.y > height()) {
-                go("sectionunderground");
+                go("sectionunderground",STATE);
+            }
+        } else if (player.pos.x > 480 && player.pos.x < 511){
+            if (player.pos.y > height() ) {
+                go("sectionholes",STATE);
             }
         }
     });
-
 
 }
