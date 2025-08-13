@@ -11,6 +11,7 @@ export default function(STATE){
     loadSprite("backyard", "sprites/assets/sections/section1_backyard.png");
     loadSprite("player", "sprites/assets/characters/player.png");
 
+
     let SPEED = 75;
     setGravity(1850);
     add([

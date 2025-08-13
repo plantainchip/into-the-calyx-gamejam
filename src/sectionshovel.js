@@ -12,6 +12,7 @@ export default function(STATE){
     loadSprite("middle", "sprites/assets/backgrounds/bg_mid.png");
 
     loadSprite("shovel", "sprites/assets/items/shovel.png");
+    loadSprite("dirt", "sprites/assets/items/dirt.png");
 
     let SPEED = 75;
     setGravity(1850);
@@ -122,6 +123,7 @@ export default function(STATE){
     });
 
 
+
     // camera =====================================
     const original_cam_posx = player.pos.x;
     // debug.log("original cam pos x: " + original_cam_posx);
@@ -150,7 +152,7 @@ export default function(STATE){
     if (!STATE.shovel_item.collected) {
         const shovelitem = add([
             sprite("shovel"),
-            pos(80,96),
+            pos(128,96),
             body(),
             area(),
             z(2),
@@ -162,6 +164,48 @@ export default function(STATE){
         shovel.destroy();
         STATE.shovel_item.collected = true;
         console.log("Collected shovel");
+    })
+
+    if (!STATE.dirt_1.collected) {
+        const dirtitem = add([
+            sprite("dirt"),
+            pos(276,96),
+            // body(),
+            area(),
+            z(2),
+            "dirt_1"
+        ])
+    }
+
+    player.onCollide("dirt_1", (dirt) => {
+        if( !STATE.shovel_item.collected) {
+            console.log("You need a shovel to dig this dirt!");
+            return;
+        }
+        dirt.destroy();
+        STATE.dirt_1 = true;
+        console.log("dug some dirt");
+    })
+
+    if (!STATE.dirt_2.collected) {
+        const dirtitem = add([
+            sprite("dirt"),
+            pos(352,96),
+            // body(),
+            area(),
+            z(2),
+            "dirt_1"
+        ])
+    }
+
+    player.onCollide("dirt_2", (dirt) => {
+        if( !STATE.shovel_item.collected) {
+            console.log("You need a shovel to dig this dirt!");
+            return;
+        }
+        dirt.destroy();
+        STATE.dirt_2 = true;
+        console.log("dug some dirt");
     })
 
 

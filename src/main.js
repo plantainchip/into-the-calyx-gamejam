@@ -1,6 +1,8 @@
 import kaplay from "kaplay";
 import "kaplay/global"; 
 import backyardscene from "./backyard";
+import opening from "./opening";
+
 
 kaplay({
     width: 160,
@@ -16,11 +18,17 @@ const STATE = {
   },
   shovel_item: {
     collected: false
-  }
+  },
+  dirt_1: false,
+  dirt_2: false,
 }
 
-scene("backyard", backyardscene);
-go("backyard", STATE);
+
+scene("opening", opening);
+go("opening", STATE);
+
+// scene("backyard", backyardscene);
+// go("backyard", STATE);
 
 // import sectionshovel from "./sectionshovel";
 // scene("sectionshovel", sectionshovel);
