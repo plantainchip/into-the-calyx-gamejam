@@ -161,6 +161,23 @@ export default function (STATE) {
     }
 
     player.onCollide("shovel_item", (shovel) => {
+        // text
+        const flowertextbg = add([
+            rect(130, 5),
+            pos(160, 46),
+            color(255, 255, 255)
+        ])
+        const foundflower = add([
+            text("found a shovel. press s when you find dirt", {
+                size: 5,
+            }),
+            pos(160, 46),
+            color(0, 0, 0)
+        ])
+        wait(10, () => {
+            foundflower.destroy()
+            flowertextbg.destroy()
+        })
         shovel.destroy();
         STATE.shovel_item.collected = true;
         console.log("Collected shovel");
@@ -181,6 +198,23 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("s") && player.isOverlapping(dirt1)) {
                 if (STATE.shovel_item.collected && !STATE.dirt_1) {
+                    // text
+                    const flowertextbg = add([
+                        rect(95, 5),
+                        pos(276, 80),
+                        color(255, 255, 255)
+                    ])
+                    const foundflower = add([
+                        text("dug some dirt. found a flower", {
+                            size: 5,
+                        }),
+                        pos(276, 80),
+                        color(0, 0, 0)
+                    ])
+                    wait(3, () => {
+                        foundflower.destroy()
+                        flowertextbg.destroy()
+                    })
                     dirt1.destroy();
                     STATE.dirt_1 = true;
                     STATE.flowers.push("dirt_flower");
@@ -215,8 +249,25 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("s") && player.isOverlapping(dirt2)) {
                 if (STATE.shovel_item.collected && !STATE.dirt_2) {
+                    // text
+                    const flowertextbg = add([
+                        rect(40, 5),
+                        pos(352, 90),
+                        color(255, 255, 255)
+                    ])
+                    const foundflower = add([
+                        text("dug some dirt", {
+                            size: 5,
+                        }),
+                        pos(352, 90),
+                        color(0, 0, 0)
+                    ])
+                    wait(3, () => {
+                        foundflower.destroy()
+                        flowertextbg.destroy()
+                    })
                     dirt2.destroy();
-                    STATE.dirt_2= true;
+                    STATE.dirt_2 = true;
                     console.log("dug some dirt");
                     console.log("STATE.flowers.length: " + STATE.flowers.length);
                     return
@@ -246,8 +297,25 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("s") && player.isOverlapping(dirt3)) {
                 if (STATE.shovel_item.collected && !STATE.dirt_3) {
+                    // text
+                    const flowertextbg = add([
+                        rect(40, 5),
+                        pos(464, 32),
+                        color(255, 255, 255)
+                    ])
+                    const foundflower = add([
+                        text("dug some dirt", {
+                            size: 5,
+                        }),
+                        pos(464, 32),
+                        color(0, 0, 0)
+                    ])
+                    wait(3, () => {
+                        foundflower.destroy()
+                        flowertextbg.destroy()
+                    })
                     dirt3.destroy();
-                    STATE.dirt_3= true;
+                    STATE.dirt_3 = true;
                     console.log("dug some dirt");
                     console.log("STATE.flowers.length: " + STATE.flowers.length);
                     return
@@ -260,6 +328,13 @@ export default function (STATE) {
         })
     })
 
+
+    // checks if you get flowers to get to final cutscene
+    onUpdate(() => {
+        if (STATE.flowers.length > 2) {
+            go("backyard", STATE)
+        }
+    })
 
 
 

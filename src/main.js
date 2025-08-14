@@ -22,9 +22,13 @@ const STATE = {
   scissor_item: {
     collected: false
   },
+  // shovel scene
   dirt_1: false,
   dirt_2: false,
   dirt_3: false,
+
+  // holes scenes
+  dirt_4: false,
 
   // underground, hiding flower
   vine_1: false,
@@ -39,6 +43,12 @@ const STATE = {
   vine_8: false,
   vine_9: false,
   vine_10: false,
+
+  //bosscave
+  boss_1: {
+    health: 2,
+    dead: false,
+  }
 
 }
 
@@ -57,10 +67,14 @@ const STATE = {
 // scene("sectionholes", sectionholes);
 // go("sectionholes", STATE);
 
-import sectionunderground from "./sectionunderground";
-scene("sectionunderground", sectionunderground);
-go("sectionunderground", STATE);
+// import sectionunderground from "./sectionunderground";
+// scene("sectionunderground", sectionunderground);
+// go("sectionunderground", STATE);
 
-// import sectionflowercave from "./sectionflowercave";
-// scene("sectionflowercave", sectionflowercave);
-// go("sectionflowercave", STATE);
+import sectionflowercave from "./sectionflowercave";
+scene("sectionflowercave", sectionflowercave);
+go("sectionflowercave", STATE);
+
+// import sectionbosscave from "./sectionbosscave";
+// scene("sectionbosscave", sectionbosscave);
+// go("sectionbosscave", STATE);

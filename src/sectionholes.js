@@ -1,14 +1,17 @@
 import "kaplay/global";
 import sectionshovel from "./sectionshovel";
 import sectionunderground from "./sectionunderground";
+import sectionbosscave from "./sectionbosscave";
 
 export default function(STATE){
     scene("sectionshovel", sectionshovel);
     scene("sectionunderground", sectionunderground);
+    scene("sectionbosscave", sectionbosscave);
 
     loadSprite("background", "sprites/assets/backgrounds/background1_moonlight.png");
     loadSprite("area_holes", "sprites/assets/sections/section_holes.png");
     loadSprite("player", "sprites/assets/characters/player.png");
+    loadSprite("dirt", "sprites/assets/items/dirt.png");
 
     let SPEED = 75;
     setGravity(1850);
@@ -158,15 +161,72 @@ export default function(STATE){
 
     // transition to underground section
     player.onUpdate(() => {
-        if (player.pos.x < 480 || player.pos.x > 511){
-            if (player.pos.y > height()) {
+        if (player.pos.x > 95 && player.pos.x < 114){
+            if (player.pos.y > 130) {
                 go("sectionunderground",STATE);
             }
+        } else if (player.pos.x > 399 && player.pos.x < 432){
+            if (player.pos.y > 130) {
+                go("sectionunderground",STATE);
+            }
+        } else if (player.pos.x > 591 && player.pos.x < 608){
+            if (player.pos.y > 130){
+                go("sectionbosscave", STATE)
+            }
         } else if (player.pos.x > 480 && player.pos.x < 511){
-            if (player.pos.y > height() ) {
+            if (player.pos.y > 130) {
+                
                 go("sectionholes",STATE);
             }
         }
     });
+
+
+    // adding items ===========================
+    if (!STATE.dirt_4) {
+        const dirtitem = add([
+            sprite("dirt"),
+            pos(48, 96),
+            // body(),
+            area(),
+            z(15),
+            "dirt_4"
+        ])
+    }
+
+    player.onCollide("dirt_4", (dirt4) => {
+        onUpdate(() => {
+            if (isKeyPressed("s") && player.isOverlapping(dirt4)) {
+                if (STATE.shovel_item.collected && !STATE.dirt_4) {
+                    // text
+                    const flowertextbg = add([
+                        rect(150, 5),
+                        pos(48, 80),
+                        color(255, 255, 255)
+                    ])
+                    const foundflower = add([
+                        text("dug some dirt. some holes might be paths...", {
+                            size: 5,
+                        }),
+                        pos(48, 80),
+                        color(0, 0, 0)
+                    ])
+                    wait(4, () => {
+                        foundflower.destroy()
+                        flowertextbg.destroy()
+                    })
+                    dirt4.destroy();
+                    STATE.dirt_4 = true;
+                    console.log("dug some dirt");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a shovel to dig");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
 
 }
