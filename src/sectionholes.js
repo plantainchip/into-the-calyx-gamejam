@@ -2,12 +2,15 @@ import "kaplay/global";
 import sectionshovel from "./sectionshovel";
 import sectionunderground from "./sectionunderground";
 import sectionbosscave from "./sectionbosscave";
+import ending from "./ending";
 
 export default function(STATE){
     scene("sectionshovel", sectionshovel);
     scene("sectionunderground", sectionunderground);
     scene("sectionbosscave", sectionbosscave);
+    scene("ending", ending)
 
+    loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
     loadSprite("background", "sprites/assets/backgrounds/background1_moonlight.png");
     loadSprite("area_holes", "sprites/assets/sections/section_holes.png");
     loadSprite("player", "sprites/assets/characters/player.png");
@@ -175,7 +178,7 @@ export default function(STATE){
             }
         } else if (player.pos.x > 480 && player.pos.x < 511){
             if (player.pos.y > 130) {
-                
+
                 go("sectionholes",STATE);
             }
         }
@@ -229,4 +232,54 @@ export default function(STATE){
         })
     })
 
+    if (!STATE.dirt_5) {
+        const dirtitem = add([
+            sprite("dirt"),
+            pos(560,64),
+            // body(),
+            area(),
+            z(15),
+            "dirt_5"
+        ])
+    }
+
+    player.onCollide("dirt_5", (dirt5) => {
+        onUpdate(() => {
+            if (isKeyPressed("s") && player.isOverlapping(dirt5)) {
+                if (STATE.shovel_item.collected && !STATE.dirt_5) {
+                    // text
+                    const flowertextbg = add([
+                        rect(150, 5),
+                        pos(496,48),
+                        color(255, 255, 255)
+                    ])
+                    const foundflower = add([
+                        text("dug some dirt. do you have all your tools?", {
+                            size: 5,
+                        }),
+                        pos(496,48),
+                        color(0, 0, 0)
+                    ])
+                    wait(3, () => {
+                        foundflower.destroy()
+                        flowertextbg.destroy()
+                    })
+                    dirt5.destroy();
+                    STATE.dirt_5 = true;
+                    console.log("dug some dirt");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a shovel to dig");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
+
+
+
+
+    
 }

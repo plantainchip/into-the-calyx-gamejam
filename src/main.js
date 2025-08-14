@@ -13,9 +13,8 @@ kaplay({
 
 const STATE = {
   flowers: [],
-  cave_flower: {
-    collected: false
-  },
+  cave_flower: false,
+  
   shovel_item: {
     collected: false
   },
@@ -29,6 +28,7 @@ const STATE = {
 
   // holes scenes
   dirt_4: false,
+  dirt_5: false,
 
   // underground, hiding flower
   vine_1: false,
@@ -53,8 +53,8 @@ const STATE = {
 }
 
 
-// scene("opening", opening);
-// go("opening", STATE);
+scene("opening", opening);
+go("opening", STATE);
 
 // scene("backyard", backyardscene);
 // go("backyard", STATE);
@@ -71,9 +71,9 @@ const STATE = {
 // scene("sectionunderground", sectionunderground);
 // go("sectionunderground", STATE);
 
-import sectionflowercave from "./sectionflowercave";
-scene("sectionflowercave", sectionflowercave);
-go("sectionflowercave", STATE);
+// import sectionflowercave from "./sectionflowercave";
+// scene("sectionflowercave", sectionflowercave);
+// go("sectionflowercave", STATE);
 
 // import sectionbosscave from "./sectionbosscave";
 // scene("sectionbosscave", sectionbosscave);

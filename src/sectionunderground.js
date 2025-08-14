@@ -2,12 +2,15 @@ import "kaplay/global";
 import sectionholes from "./sectionholes";
 import sectionunderground from "./sectionunderground";
 import sectionflowercave from "./sectionflowercave";
+import ending from "./ending";
 
 export default function (STATE) {
     scene("sectionholes", sectionholes);
     scene("sectionunderground", sectionunderground);
     scene("sectionflowercave", sectionflowercave);
+    scene("ending", ending);
 
+    loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
     loadSprite("background", "sprites/assets/backgrounds/background1_moonlight.png");
     loadSprite("area_underground", "sprites/assets/sections/section_underground.png");
     loadSprite("player", "sprites/assets/characters/player.png");
@@ -665,7 +668,6 @@ export default function (STATE) {
             }
         })
     })
-
 
 
 }

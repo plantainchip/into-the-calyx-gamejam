@@ -1,10 +1,13 @@
 import "kaplay/global";
 import sectionholes from "./sectionholes";
+import ending from "./ending";
 
 export default function(STATE){
     scene("sectionholes", sectionholes);
+    scene ("ending", ending)
     
     // you can start making your scene in this function.
+    loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
     loadSprite("background", "sprites/assets/backgrounds/background1_moonlight.png");
     loadSprite("bosscave", "sprites/assets/sections/section_boss.png");
     loadSprite("player", "sprites/assets/characters/player.png");
@@ -121,6 +124,34 @@ export default function(STATE){
         })
     })
 
+    //checks if you get flowers to get to final cutscene
+    onUpdate(() => {
+        console.log("final cutscene")
+        if (STATE.flowers.length > 1) {
+
+            // wait(3, () => {
+            //     go("ending", STATE)
+            // })
+
+            const cutscene = add([
+                sprite("warp_cutscene", {
+                    // anim: "op",
+                }),
+                pos(0, 0),
+                z(20)
+                // animate(),
+            ])
+
+            cutscene.play("waaarp", {
+                loop: false,
+                onEnd: () => {
+                    // go to backyard scene after cutscene ends
+                    go("ending", STATE);
+                }
+            });
+
+        }
+    })
 
     
     
