@@ -9,11 +9,12 @@ export default function(STATE){
     loadSprite("flowercave", "sprites/assets/sections/section_flowercave.png");
     loadSprite("player", "sprites/assets/characters/player.png");
     loadSprite("flower", "sprites/assets/items/flower.png");
+    loadSprite("cave_bg", "sprites/assets/backgrounds/cave_bg.png");
 
     let SPEED = 75;
     setGravity(1850);
     add([
-        sprite("background"), 
+        sprite("cave_bg"), 
         pos(0,0),
         body({isStatic:true})
     ]);

@@ -39,7 +39,7 @@ export default function(STATE){
     // adding player
     const player = add([
         sprite("player"),
-        pos(32, 96),
+        pos(35, 96),
         body(),
         area(),
         doubleJump(2),

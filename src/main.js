@@ -21,18 +21,19 @@ const STATE = {
   },
   dirt_1: false,
   dirt_2: false,
+  dirt_3: false,
 }
 
 
-scene("opening", opening);
-go("opening", STATE);
+// scene("opening", opening);
+// go("opening", STATE);
 
 // scene("backyard", backyardscene);
 // go("backyard", STATE);
 
-// import sectionshovel from "./sectionshovel";
-// scene("sectionshovel", sectionshovel);
-// go("sectionshovel", STATE);
+import sectionshovel from "./sectionshovel";
+scene("sectionshovel", sectionshovel);
+go("sectionshovel", STATE);
 
 // import sectionholes from "./sectionholes";
 // scene("sectionholes", sectionholes);

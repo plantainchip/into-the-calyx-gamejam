@@ -2,7 +2,7 @@ import "kaplay/global";
 import sectionholes from "./sectionholes";
 import backyard from "./backyard";
 
-export default function(STATE){
+export default function (STATE) {
     scene("sectionholes", sectionholes);
     scene("backyard", backyard);
 
@@ -18,8 +18,8 @@ export default function(STATE){
     setGravity(1850);
 
     const moon_bg = add([
-        sprite("background"), 
-        pos(0,0),
+        sprite("background"),
+        pos(0, 0),
         // body({isStatic:true})
     ]);
 
@@ -30,64 +30,64 @@ export default function(STATE){
 
 
     add([
-        sprite("area_shovel"), 
-        pos(0,0),
-        body({isStatic:true})
+        sprite("area_shovel"),
+        pos(0, 0),
+        body({ isStatic: true })
     ]);
 
     // adding platform ====================================
     add([
         rect(750, 32),
-        pos(-50,112),
-        color(99,155,255),
+        pos(-50, 112),
+        color(99, 155, 255),
         opacity(0),
         area(),
-        body({isStatic:true}),
+        body({ isStatic: true }),
     ])
 
     add([
         rect(32, 16),
         pos(96, 96),
-        color(99,155,255),
+        color(99, 155, 255),
         opacity(0),
         area(),
-        body({isStatic:true}),
+        body({ isStatic: true }),
     ]);
 
     add([
         rect(32, 32),
         pos(144, 80),
-        color(99,155,255),
+        color(99, 155, 255),
         opacity(0),
         area(),
-        body({isStatic:true}),
+        body({ isStatic: true }),
     ]);
 
     add([
         rect(32, 16),
         pos(224, 96),
-        color(99,155,255),
+        color(99, 155, 255),
         opacity(0),
         area(),
-        body({isStatic:true}),
+        body({ isStatic: true }),
     ]);
 
     add([
         rect(16, 16),
         pos(400, 96),
-        color(99,155,255),
+        color(99, 155, 255),
         opacity(0),
         area(),
-        body({isStatic:true}),
+        body({ isStatic: true }),
     ]);
 
     add([
         rect(128, 48),
         pos(416, 64),
-        color(99,155,255),
+        color(99, 155, 255),
         opacity(0),
         area(),
-        body({isStatic:true}),
+        body({ isStatic: true }),
     ]);
 
 
@@ -129,7 +129,7 @@ export default function(STATE){
     // debug.log("original cam pos x: " + original_cam_posx);
     player.onUpdate(() => {
         // first if statement to stop cam at end of section
-        if ( player.pos.x < 544){
+        if (player.pos.x < 544) {
             // 2nd if statement to move cam with player
             if (player.pos.x >= original_cam_posx + 48) {
                 setCamPos(player.pos.x + 16, height() / 2);
@@ -152,7 +152,7 @@ export default function(STATE){
     if (!STATE.shovel_item.collected) {
         const shovelitem = add([
             sprite("shovel"),
-            pos(128,96),
+            pos(160, 64),
             body(),
             area(),
             z(2),
@@ -166,47 +166,117 @@ export default function(STATE){
         console.log("Collected shovel");
     })
 
-    if (!STATE.dirt_1.collected) {
+    if (!STATE.dirt_1) {
         const dirtitem = add([
             sprite("dirt"),
-            pos(276,96),
+            pos(276, 96),
             // body(),
             area(),
-            z(2),
+            z(15),
             "dirt_1"
         ])
     }
 
-    player.onCollide("dirt_1", (dirt) => {
-        if( !STATE.shovel_item.collected) {
-            console.log("You need a shovel to dig this dirt!");
-            return;
-        }
-        dirt.destroy();
-        STATE.dirt_1 = true;
-        console.log("dug some dirt");
+    player.onCollide("dirt_1", (dirt1) => {
+        // player.onKeyPress("s", () => {
+        //     if( STATE.shovel_item.collected && !STATE.dirt_1) {
+        //         dirt1.destroy();
+        //         STATE.dirt_1 = true;
+        //         STATE.flowers.push("dirt_flower");
+        //         console.log("dug some dirt. found a flower");
+        //         console.log("STATE.flowers.length: " + STATE.flowers.length);
+        //         return
+        //     } else {
+        //         console.log("you need a shovel to dig");
+        //         console.log("STATE.flowers.length: " + STATE.flowers.length);
+        //         return
+        //     }
+        // })
+
+        onUpdate(() => {
+            if (isKeyPressed("s") && player.isOverlapping(dirt1)) {
+                if (STATE.shovel_item.collected && !STATE.dirt_1) {
+                    dirt1.destroy();
+                    STATE.dirt_1 = true;
+                    STATE.flowers.push("dirt_flower");
+                    console.log("dug some dirt. found a flower");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a shovel to dig");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                }
+            }
+        })
+
     })
 
-    if (!STATE.dirt_2.collected) {
+
+
+
+    if (!STATE.dirt_2) {
         const dirtitem = add([
             sprite("dirt"),
-            pos(352,96),
+            pos(352, 96),
             // body(),
             area(),
-            z(2),
-            "dirt_1"
+            z(15),
+            "dirt_2"
         ])
     }
 
-    player.onCollide("dirt_2", (dirt) => {
-        if( !STATE.shovel_item.collected) {
-            console.log("You need a shovel to dig this dirt!");
-            return;
-        }
-        dirt.destroy();
-        STATE.dirt_2 = true;
-        console.log("dug some dirt");
+    player.onCollide("dirt_2", (dirt2) => {
+        onUpdate(() => {
+            if (isKeyPressed("s") && player.isOverlapping(dirt2)) {
+                if (STATE.shovel_item.collected && !STATE.dirt_2) {
+                    dirt2.destroy();
+                    STATE.dirt_2= true;
+                    console.log("dug some dirt");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a shovel to dig");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+
     })
+
+
+    if (!STATE.dirt_3) {
+        const dirtitem = add([
+            sprite("dirt"),
+            pos(464, 48),
+            // body(),
+            area(),
+            z(15),
+            "dirt_3"
+        ])
+    }
+
+    player.onCollide("dirt_3", (dirt3) => {
+        onUpdate(() => {
+            if (isKeyPressed("s") && player.isOverlapping(dirt3)) {
+                if (STATE.shovel_item.collected && !STATE.dirt_3) {
+                    dirt3.destroy();
+                    STATE.dirt_3= true;
+                    console.log("dug some dirt");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a shovel to dig");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
+
+
+
 
 
 }
