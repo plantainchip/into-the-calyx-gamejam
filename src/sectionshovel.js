@@ -178,21 +178,6 @@ export default function (STATE) {
     }
 
     player.onCollide("dirt_1", (dirt1) => {
-        // player.onKeyPress("s", () => {
-        //     if( STATE.shovel_item.collected && !STATE.dirt_1) {
-        //         dirt1.destroy();
-        //         STATE.dirt_1 = true;
-        //         STATE.flowers.push("dirt_flower");
-        //         console.log("dug some dirt. found a flower");
-        //         console.log("STATE.flowers.length: " + STATE.flowers.length);
-        //         return
-        //     } else {
-        //         console.log("you need a shovel to dig");
-        //         console.log("STATE.flowers.length: " + STATE.flowers.length);
-        //         return
-        //     }
-        // })
-
         onUpdate(() => {
             if (isKeyPressed("s") && player.isOverlapping(dirt1)) {
                 if (STATE.shovel_item.collected && !STATE.dirt_1) {

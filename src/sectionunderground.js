@@ -11,6 +11,9 @@ export default function(STATE){
     loadSprite("background", "sprites/assets/backgrounds/background1_moonlight.png");
     loadSprite("area_underground", "sprites/assets/sections/section_underground.png");
     loadSprite("player", "sprites/assets/characters/player.png");
+    loadSprite("scissors", "sprites/assets/items/scissors.png");
+    loadSprite("vine", "sprites/assets/items/vines.png");
+
 
     let SPEED = 75;
     setGravity(1850);
@@ -160,6 +163,320 @@ export default function(STATE){
             moon_bg.pos.x = player.pos.x - 80;
         }
         
+    })
+
+    // items =======================================
+
+    if (!STATE.scissor_item.collected) {
+        const scissoritem = add([
+            sprite("scissors"),
+            pos(208, 96),
+            body(),
+            area(),
+            z(2),
+            "scissor_item"
+        ])
+    }
+
+    player.onCollide("scissor_item", (scissor) => {
+        scissor.destroy();
+        STATE.scissor_item.collected = true;
+        console.log("Collected scissor");
+    })
+
+
+    // A LOT OF VINES
+    if (!STATE.vine_1) {
+        const vineitem = add([
+            sprite("vine"),
+            pos(80, 32),
+            body({isStatic:true}),
+            area(),
+            z(2),
+            "vine_1"
+        ])
+    }
+
+    player.onCollide("vine_1", (vine1) => {
+        onUpdate(() => {
+            if (isKeyPressed("shift") && player.isColliding(vine1)) {
+                if (STATE.scissor_item.collected && !STATE.vine_1) {
+                    vine1.destroy();
+                    STATE.vine_1= true;
+                    console.log("cut some vine");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a scissors to cut this");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
+
+    if (!STATE.vine_2) {
+        const vineitem = add([
+            sprite("vine"),
+            pos(80, 48),
+            body({isStatic:true}),
+            area(),
+            z(2),
+            "vine_2"
+        ])
+    }
+
+    player.onCollide("vine_2", (vine2) => {
+        onUpdate(() => {
+            if (isKeyPressed("shift") && player.isColliding(vine2)) {
+                if (STATE.scissor_item.collected && !STATE.vine_2) {
+                    vine2.destroy();
+                    STATE.vine_2= true;
+                    console.log("cut some vine");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a scissors to cut this");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
+
+    if (!STATE.vine_3) {
+        const vineitem = add([
+            sprite("vine"),
+            pos(80, 64),
+            body({isStatic:true}),
+            area(),
+            z(2),
+            "vine_3"
+        ])
+    }
+
+    player.onCollide("vine_3", (vine3) => {
+        onUpdate(() => {
+            if (isKeyPressed("shift") && player.isColliding(vine3)) {
+                if (STATE.scissor_item.collected && !STATE.vine_3) {
+                    vine3.destroy();
+                    STATE.vine_3= true;
+                    console.log("cut some vine");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a scissors to cut this");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
+
+    if (!STATE.vine_4) {
+        const vineitem = add([
+            sprite("vine"),
+            pos(80, 80),
+            body({isStatic:true}),
+            area(),
+            z(2),
+            "vine_4"
+        ])
+    }
+
+    player.onCollide("vine_4", (vine4) => {
+        onUpdate(() => {
+            if (isKeyPressed("shift") && player.isColliding(vine4)) {
+                if (STATE.scissor_item.collected && !STATE.vine_4) {
+                    vine4.destroy();
+                    STATE.vine_4 = true;
+                    console.log("cut some vine");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a scissors to cut this");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
+
+    if (!STATE.vine_5) {
+        const vineitem = add([
+            sprite("vine"),
+            pos(80, 96),
+            body({isStatic:true}),
+            area(),
+            z(2),
+            "vine_5"
+        ])
+    }
+
+    player.onCollide("vine_5", (vine5) => {
+        onUpdate(() => {
+            if (isKeyPressed("shift") && player.isColliding(vine5)) {
+                if (STATE.scissor_item.collected && !STATE.vine_5) {
+                    vine5.destroy();
+                    STATE.vine_5 = true;
+                    console.log("cut some vine");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a scissors to cut this");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
+
+
+    // vines before ladder
+
+    if (!STATE.vine_6) {
+        const vineitem = add([
+            sprite("vine"),
+            pos(320, 32),
+            body({isStatic:true}),
+            area(),
+            z(2),
+            "vine_6"
+        ])
+    }
+
+    player.onCollide("vine_6", (vine6) => {
+        onUpdate(() => {
+            if (isKeyPressed("shift") && player.isColliding(vine6)) {
+                if (STATE.scissor_item.collected && !STATE.vine_6) {
+                    vine6.destroy();
+                    STATE.vine_6 = true;
+                    console.log("cut some vine");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a scissors to cut this");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
+
+    if (!STATE.vine_7) {
+        const vineitem = add([
+            sprite("vine"),
+            pos(320, 48),
+            body({isStatic:true}),
+            area(),
+            z(2),
+            "vine_7"
+        ])
+    }
+
+    player.onCollide("vine_7", (vine7) => {
+        onUpdate(() => {
+            if (isKeyPressed("shift") && player.isColliding(vine7)) {
+                if (STATE.scissor_item.collected && !STATE.vine_7) {
+                    vine7.destroy();
+                    STATE.vine_7 = true;
+                    console.log("cut some vine");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a scissors to cut this");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
+
+    if (!STATE.vine_8) {
+        const vineitem = add([
+            sprite("vine"),
+            pos(320, 64),
+            body({isStatic:true}),
+            area(),
+            z(2),
+            "vine_8"
+        ])
+    }
+
+    player.onCollide("vine_8", (vine8) => {
+        onUpdate(() => {
+            if (isKeyPressed("shift") && player.isColliding(vine8)) {
+                if (STATE.scissor_item.collected && !STATE.vine_8) {
+                    vine8.destroy();
+                    STATE.vine_8 = true;
+                    console.log("cut some vine");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a scissors to cut this");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
+
+    if (!STATE.vine_9) {
+        const vineitem = add([
+            sprite("vine"),
+            pos(320, 80),
+            body({isStatic:true}),
+            area(),
+            z(2),
+            "vine_9"
+        ])
+    }
+
+    player.onCollide("vine_9", (vine9) => {
+        onUpdate(() => {
+            if (isKeyPressed("shift") && player.isColliding(vine9)) {
+                if (STATE.scissor_item.collected && !STATE.vine_9) {
+                    vine9.destroy();
+                    STATE.vine_9 = true;
+                    console.log("cut some vine");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a scissors to cut this");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
+    })
+
+    if (!STATE.vine_10) {
+        const vineitem = add([
+            sprite("vine"),
+            pos(320, 96),
+            body({isStatic:true}),
+            area(),
+            z(2),
+            "vine_10"
+        ])
+    }
+
+    player.onCollide("vine_10", (vine10) => {
+        onUpdate(() => {
+            if (isKeyPressed("shift") && player.isColliding(vine10)) {
+                if (STATE.scissor_item.collected && !STATE.vine_10) {
+                    vine10.destroy();
+                    STATE.vine_10 = true;
+                    console.log("cut some vine");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a scissors to cut this");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return;
+                }
+            }
+        })
     })
 
 
