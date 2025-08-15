@@ -15,6 +15,8 @@ export default function (STATE) {
     loadSprite("player", "sprites/assets/characters/player.png");
     loadSprite("flower", "sprites/assets/items/flower.png");
     loadSprite("cave_bg", "sprites/assets/backgrounds/cave_bg.png");
+    loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+
 
     let SPEED = 75;
     setGravity(1850);
@@ -35,7 +37,7 @@ export default function (STATE) {
         rect(250, 16),
         pos(-50, 128),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -45,7 +47,7 @@ export default function (STATE) {
         rect(16, 128),
         pos(0, 0),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -54,7 +56,7 @@ export default function (STATE) {
         rect(48, 32),
         pos(112, 96),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -63,7 +65,7 @@ export default function (STATE) {
         rect(16, 16),
         pos(96, 112),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -72,7 +74,7 @@ export default function (STATE) {
         rect(160, 16),
         pos(16, 0),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -81,7 +83,7 @@ export default function (STATE) {
         rect(32, 48),
         pos(128, 16),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -130,13 +132,14 @@ export default function (STATE) {
                 if (STATE.scissor_item.collected && !STATE.cave_flower) {
                     // text
                     const textbg = add([
-                        rect(85, 5),
+                        rect(85, 8),
                         pos(32, 80),
                         color(255, 255, 255)
                     ])
                     const found = add([
                         text("snip. you found a flower", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(32, 80),
                         color(0, 0, 0)

@@ -16,6 +16,7 @@ export default function (STATE) {
     loadSprite("player", "sprites/assets/characters/player.png");
     loadSprite("scissors", "sprites/assets/items/scissors.png");
     loadSprite("vine", "sprites/assets/items/vines.png");
+    loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
 
 
     let SPEED = 75;
@@ -37,7 +38,7 @@ export default function (STATE) {
         rect(750, 32),
         pos(-50, 112),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -45,7 +46,7 @@ export default function (STATE) {
         rect(450, 32),
         pos(-50, 0),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -54,7 +55,7 @@ export default function (STATE) {
         rect(64, 16),
         pos(0, 96),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -63,7 +64,7 @@ export default function (STATE) {
         rect(48, 32),
         pos(0, 32),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -72,7 +73,7 @@ export default function (STATE) {
         rect(64, 16),
         pos(176, 64),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -81,7 +82,7 @@ export default function (STATE) {
         rect(32, 32),
         pos(160, 80),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -90,7 +91,7 @@ export default function (STATE) {
         rect(32, 16),
         pos(336, 96),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -99,7 +100,7 @@ export default function (STATE) {
         rect(32, 32),
         pos(368, 80),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -108,7 +109,7 @@ export default function (STATE) {
         rect(32, 48),
         pos(400, 64),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -117,7 +118,7 @@ export default function (STATE) {
         rect(32, 112),
         pos(432, 0),
         color(99, 155, 255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({ isStatic: true }),
     ])
@@ -184,13 +185,14 @@ export default function (STATE) {
     player.onCollide("scissor_item", (scissor) => {
         // text
         const textbg = add([
-            rect(160, 5),
+            rect(160, 8),
             pos(192, 80),
             color(255, 255, 255)
         ])
         const found = add([
             text("found shears. press f to cut vines or enemies!", {
-                size: 5,
+                size: 8,
+                font:"font"
             }),
             pos(192, 80),
             color(0, 0, 0)
@@ -223,13 +225,14 @@ export default function (STATE) {
                 if (STATE.scissor_item.collected && !STATE.vine_1) {
                     // text
                     const textbg = add([
-                        rect(16, 5),
+                        rect(16, 8),
                         pos(80, 32),
                         color(255, 255, 255)
                     ])
                     const found = add([
                         text("snip", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(80, 32),
                         color(0, 0, 0)
@@ -269,13 +272,14 @@ export default function (STATE) {
                 if (STATE.scissor_item.collected && !STATE.vine_2) {
                     // text
                     const textbg = add([
-                        rect(16, 5),
+                        rect(16, 8),
                         pos(80, 48),
                         color(255, 255, 255)
                     ])
                     const found = add([
                         text("snip", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(80, 48),
                         color(0, 0, 0)
@@ -315,13 +319,14 @@ export default function (STATE) {
                 if (STATE.scissor_item.collected && !STATE.vine_3) {
                     // text
                     const textbg = add([
-                        rect(16, 5),
+                        rect(16, 8),
                         pos(80, 64),
                         color(255, 255, 255)
                     ])
                     const found = add([
                         text("snip", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(80, 64),
                         color(0, 0, 0)
@@ -361,13 +366,14 @@ export default function (STATE) {
                 if (STATE.scissor_item.collected && !STATE.vine_4) {
                     // text
                     const textbg = add([
-                        rect(16, 5),
+                        rect(16, 8),
                         pos(80, 80),
                         color(255, 255, 255)
                     ])
                     const found = add([
                         text("snip", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(80, 80),
                         color(0, 0, 0)
@@ -407,13 +413,14 @@ export default function (STATE) {
                 if (STATE.scissor_item.collected && !STATE.vine_5) {
                     // text
                     const textbg = add([
-                        rect(16, 5),
+                        rect(16, 8),
                         pos(80, 96),
                         color(255, 255, 255)
                     ])
                     const found = add([
                         text("snip", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(80, 96),
                         color(0, 0, 0)
@@ -456,13 +463,14 @@ export default function (STATE) {
                 if (STATE.scissor_item.collected && !STATE.vine_6) {
                     // text
                     const textbg = add([
-                        rect(16, 5),
+                        rect(16, 8),
                         pos(320, 32),
                         color(255, 255, 255)
                     ])
                     const found = add([
                         text("snip", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(320, 32),
                         color(0, 0, 0)
@@ -502,13 +510,14 @@ export default function (STATE) {
                 if (STATE.scissor_item.collected && !STATE.vine_7) {
                     // text
                     const textbg = add([
-                        rect(16, 5),
+                        rect(16, 8),
                         pos(320, 48),
                         color(255, 255, 255)
                     ])
                     const found = add([
                         text("snip", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(320, 48),
                         color(0, 0, 0)
@@ -548,13 +557,14 @@ export default function (STATE) {
                 if (STATE.scissor_item.collected && !STATE.vine_8) {
                     // text
                     const textbg = add([
-                        rect(16, 5),
+                        rect(16, 8),
                         pos(320, 64),
                         color(255, 255, 255)
                     ])
                     const found = add([
                         text("snip", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(320, 64),
                         color(0, 0, 0)
@@ -594,13 +604,14 @@ export default function (STATE) {
                 if (STATE.scissor_item.collected && !STATE.vine_9) {
                     // text
                     const textbg = add([
-                        rect(16, 5),
+                        rect(16, 8),
                         pos(320, 80),
                         color(255, 255, 255)
                     ])
                     const found = add([
                         text("snip", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(320, 80),
                         color(0, 0, 0)
@@ -640,13 +651,14 @@ export default function (STATE) {
                 if (STATE.scissor_item.collected && !STATE.vine_10) {
                     // text
                     const textbg = add([
-                        rect(16, 5),
+                        rect(16, 8),
                         pos(320, 96),
                         color(255, 255, 255)
                     ])
                     const found = add([
                         text("snip", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(320, 96),
                         color(0, 0, 0)

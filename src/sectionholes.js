@@ -15,6 +15,7 @@ export default function(STATE){
     loadSprite("area_holes", "sprites/assets/sections/section_holes.png");
     loadSprite("player", "sprites/assets/characters/player.png");
     loadSprite("dirt", "sprites/assets/items/dirt.png");
+    loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
 
     let SPEED = 75;
     setGravity(1850);
@@ -35,7 +36,7 @@ export default function(STATE){
         rect(146, 32),
         pos(-50,112),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -44,7 +45,7 @@ export default function(STATE){
         rect(256, 32),
         pos(144,112),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -53,7 +54,7 @@ export default function(STATE){
         rect(48, 16),
         pos(192,96),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -62,7 +63,7 @@ export default function(STATE){
         rect(16,16),
         pos(288,96),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -70,7 +71,7 @@ export default function(STATE){
         rect(32,32),
         pos(304,80),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -78,7 +79,7 @@ export default function(STATE){
         rect(48,32),
         pos(432,112),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -87,7 +88,7 @@ export default function(STATE){
         rect(80,32),
         pos(512,112),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -96,7 +97,7 @@ export default function(STATE){
         rect(32,32),
         pos(544,80),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -105,7 +106,7 @@ export default function(STATE){
         rect(32,32),
         pos(608,112),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -114,7 +115,7 @@ export default function(STATE){
         rect(32,112),
         pos(624,0),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -203,13 +204,14 @@ export default function(STATE){
                 if (STATE.shovel_item.collected && !STATE.dirt_4) {
                     // text
                     const flowertextbg = add([
-                        rect(150, 5),
+                        rect(160, 8),
                         pos(48, 80),
                         color(255, 255, 255)
                     ])
                     const foundflower = add([
                         text("dug some dirt. some holes might be paths...", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
                         pos(48, 80),
                         color(0, 0, 0)
@@ -249,15 +251,16 @@ export default function(STATE){
                 if (STATE.shovel_item.collected && !STATE.dirt_5) {
                     // text
                     const flowertextbg = add([
-                        rect(150, 5),
-                        pos(496,48),
+                        rect(160, 8),
+                        pos(480,48),
                         color(255, 255, 255)
                     ])
                     const foundflower = add([
                         text("dug some dirt. do you have all your tools?", {
-                            size: 5,
+                            size: 8,
+                            font:"font"
                         }),
-                        pos(496,48),
+                        pos(480,48),
                         color(0, 0, 0)
                     ])
                     wait(3, () => {

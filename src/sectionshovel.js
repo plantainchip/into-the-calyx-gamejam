@@ -13,6 +13,8 @@ export default function (STATE) {
     loadSprite("area_shovel", "sprites/assets/sections/section_shovel.png");
     loadSprite("player", "sprites/assets/characters/player.png");
     loadSprite("middle", "sprites/assets/backgrounds/bg_mid.png");
+    loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+
 
     loadSprite("shovel", "sprites/assets/items/shovel.png");
     loadSprite("dirt", "sprites/assets/items/dirt.png");
@@ -166,15 +168,16 @@ export default function (STATE) {
     player.onCollide("shovel_item", (shovel) => {
         // text
         const flowertextbg = add([
-            rect(130, 5),
+            rect(144, 8),
             pos(160, 46),
             color(255, 255, 255)
         ])
         const foundflower = add([
             text("found a shovel. press s when you find dirt", {
-                size: 5,
+                size: 8,
+                font: "font"
             }),
-            pos(160, 46),
+            pos(162, 46),
             color(0, 0, 0)
         ])
         wait(10, () => {
@@ -203,13 +206,14 @@ export default function (STATE) {
                 if (STATE.shovel_item.collected && !STATE.dirt_1) {
                     // text
                     const flowertextbg = add([
-                        rect(95, 5),
+                        rect(114, 8),
                         pos(276, 80),
                         color(255, 255, 255)
                     ])
                     const foundflower = add([
                         text("dug some dirt. found a flower", {
-                            size: 5,
+                            size: 8,
+                            font: "font"
                         }),
                         pos(276, 80),
                         color(0, 0, 0)
@@ -254,13 +258,14 @@ export default function (STATE) {
                 if (STATE.shovel_item.collected && !STATE.dirt_2) {
                     // text
                     const flowertextbg = add([
-                        rect(40, 5),
+                        rect(48, 8),
                         pos(352, 90),
                         color(255, 255, 255)
                     ])
                     const foundflower = add([
                         text("dug some dirt", {
-                            size: 5,
+                            size: 8,
+                            font: "font"
                         }),
                         pos(352, 90),
                         color(0, 0, 0)
@@ -302,13 +307,14 @@ export default function (STATE) {
                 if (STATE.shovel_item.collected && !STATE.dirt_3) {
                     // text
                     const flowertextbg = add([
-                        rect(40, 5),
+                        rect(48, 8),
                         pos(464, 32),
                         color(255, 255, 255)
                     ])
                     const foundflower = add([
                         text("dug some dirt", {
-                            size: 5,
+                            size: 8,
+                            font: "font"
                         }),
                         pos(464, 32),
                         color(0, 0, 0)

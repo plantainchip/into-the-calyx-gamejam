@@ -34,7 +34,7 @@ export default function(STATE){
         rect(250, 32),
         pos(-50,112),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -44,7 +44,7 @@ export default function(STATE){
         rect(16, 112),
         pos(0,0),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -53,7 +53,7 @@ export default function(STATE){
         rect(160, 16),
         pos(16,0),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])
@@ -62,7 +62,7 @@ export default function(STATE){
         rect(16, 96),
         pos(144,16),
         color(99,155,255),
-        opacity(0.5),
+        opacity(0),
         area(),
         body({isStatic:true}),
     ])

@@ -10,9 +10,11 @@ export default function (STATE) {
 
     // you can start making your scene in this function.
     loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
-    loadSprite("background", "sprites/assets/backgrounds/background1_moonlight.png");
-    loadSprite("backyard", "sprites/assets/sections/section1_backyard.png");
-    loadSprite("player", "sprites/assets/characters/player.png");
+    loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
+    loadSprite("backyard", "./sprites/assets/sections/section1_backyard.png");
+    loadSprite("player", "./sprites/assets/characters/player.png");
+    loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+
 
 
 
@@ -32,13 +34,15 @@ export default function (STATE) {
     ])
 
     add([
-        rect(100, 5),
+        rect(120, 8),
         pos(48, 128),
         color(255, 255, 255)
     ])
+
     add([
         text("w a d to move. w to climb ladder", {
-            size: 5,
+            size: 8,
+            font: "font"
         }),
         pos(48, 128),
         color(0, 0, 0)
