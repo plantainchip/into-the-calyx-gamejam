@@ -14,7 +14,7 @@ kaplay({
 const STATE = {
   flowers: [],
   cave_flower: false,
-  
+
   shovel_item: {
     collected: false
   },
@@ -52,9 +52,26 @@ const STATE = {
 
 }
 
-
+loadSprite("title", "./sprites/assets/backgrounds/ingame_titlescreen1.png")
 scene("opening", opening);
-go("opening", STATE);
+
+scene("start", (STATE) => {
+  add([
+    sprite("title"),
+    pos(0,0)
+  ]);
+
+  // onClick(() => go("opening",STATE));
+  onKeyPress((key) => {
+    go("opening",STATE);
+  })
+
+})
+
+go("start",STATE);
+
+
+// go("opening", STATE);
 
 // scene("backyard", backyardscene);
 // go("backyard", STATE);
