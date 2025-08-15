@@ -17,6 +17,7 @@ export default function (STATE) {
     loadSprite("scissors", "sprites/assets/items/scissors.png");
     loadSprite("vine", "sprites/assets/items/vines.png");
     loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+    loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
 
 
     let SPEED = 75;
@@ -127,28 +128,49 @@ export default function (STATE) {
 
     // adding player ======================================
     const player = add([
-        sprite("player"),
+        sprite("player_animation",{
+            anim:"r_idle"
+        }),
         pos(112, 96),
         body(),
         area(),
         doubleJump(2),
+        animate()
     ]);
 
+    onKeyPress("d", () => {
+        player.play("r_run")
+    })
     onKeyDown("d", () => {
         player.move(SPEED, 0);
     });
+    onKeyRelease("d", () => {
+        player.play("r_idle")
+    })
+
+    onKeyPress("a", () => {
+        player.play("l_run")
+    })
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
         if (player.pos.x < 16) {
             go("sectionflowercave", STATE);
         }
     });
+    onKeyRelease("a", () => {
+        player.play("l_idle")
+    })
+
     onKeyPress("w", () => {
         if (player.pos.x > 416 && player.pos.x < 432) {
             go("sectionholes", STATE);
         }
         player.doubleJump(330)
+        player.play("jump")
     });
+    onKeyRelease("w", () => {
+        player.play("r_idle")
+    })
 
 
     // camera =====================================

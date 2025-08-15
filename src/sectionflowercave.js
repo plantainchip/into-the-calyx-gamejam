@@ -16,6 +16,7 @@ export default function (STATE) {
     loadSprite("flower", "sprites/assets/items/flower.png");
     loadSprite("cave_bg", "sprites/assets/backgrounds/cave_bg.png");
     loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+    loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
 
 
     let SPEED = 75;
@@ -90,13 +91,19 @@ export default function (STATE) {
 
     // adding player ======================================
     const player = add([
-        sprite("player"),
+        sprite("player_animation",{
+            anim:"l_idle"
+        }),
         pos(112, 64),
         body(),
         area(),
         doubleJump(2),
+        animate()
     ]);
 
+    onKeyPress("d", () => {
+        player.play("r_run")
+    })
     onKeyDown("d", () => {
         player.move(SPEED, 0);
 
@@ -105,15 +112,30 @@ export default function (STATE) {
             go("sectionunderground", STATE);
         }
     });
+    onKeyRelease("d", () => {
+        player.play("r_idle")
+    })
+
+    onKeyPress("a", () => {
+        player.play("l_run")
+    })
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
     });
+    onKeyRelease("a", () => {
+        player.play("l_idle")
+    })
+
     onKeyPress("w", () => {
         // if( player.isGrounded()) {
         //     player.jump(330);
         // }
         player.doubleJump(330)
+        player.play("jump")
     });
+    onKeyRelease("w", () => {
+        player.play("l_idle")
+    })
 
     // adding items =======================================
     if (!STATE.cave_flower) {

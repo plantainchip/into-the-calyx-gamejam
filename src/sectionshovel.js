@@ -14,6 +14,7 @@ export default function (STATE) {
     loadSprite("player", "sprites/assets/characters/player.png");
     loadSprite("middle", "sprites/assets/backgrounds/bg_mid.png");
     loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+    loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
 
 
     loadSprite("shovel", "sprites/assets/items/shovel.png");
@@ -101,31 +102,52 @@ export default function (STATE) {
 
     // adding player ======================================
     const player = add([
-        sprite("player"),
+        sprite("player_animation",{
+            anim:"r_idle"
+        }),
         pos(16, 96),
         body(),
         area(),
         doubleJump(2),
+        animate()
     ]);
 
+    onKeyPress("d", () => {
+        player.play("r_run")
+    })
     onKeyDown("d", () => {
         player.move(SPEED, 0);
         if (player.pos.x > 639) {
             go("sectionholes", STATE);
         }
     });
+    onKeyRelease("d", () => {
+        player.play("r_idle")
+    })
+
+    onKeyPress("a", () => {
+        player.play("l_run")
+    })
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
         if (player.pos.x < -12) {
             go("backyard", STATE);
         }
     });
+    onKeyRelease("a", () => {
+        player.play("l_idle")
+    })
+
     onKeyPress("w", () => {
         // if( player.isGrounded()) {
         //     player.jump(330);
         // }
         player.doubleJump(330)
+        player.play("jump")
     });
+    onKeyRelease("w", () => {
+        player.play("r_idle")
+    })
 
 
 
