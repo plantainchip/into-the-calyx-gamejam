@@ -17,7 +17,8 @@ export default function(STATE){
     loadSprite("dirt", "sprites/assets/items/dirt.png");
     loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
     loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
-
+    loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
+    
     let SPEED = 75;
     setGravity(1850);
 
@@ -121,6 +122,21 @@ export default function(STATE){
         body({isStatic:true}),
     ])
 
+    add([
+        sprite("wind", {
+            anim:"wind"
+        }),
+        pos(0,0),
+        animate()
+    ])
+
+    add([
+        sprite("wind", {
+            anim:"wind"
+        }),
+        pos(352,0),
+        animate()
+    ])
 
     // adding player ======================================
     const player = add([
