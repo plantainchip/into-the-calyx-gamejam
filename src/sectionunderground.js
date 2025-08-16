@@ -19,6 +19,9 @@ export default function (STATE) {
     loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
     loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
     loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
+    loadSound("snip_sound", "./sprites/assets/items/snip_sound_trimmed.mp3");
+    loadSound("collect_sound", "./sprites/assets/items/item_collect_trimmed.mp3");
+    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
 
 
     let SPEED = 75;
@@ -171,6 +174,8 @@ export default function (STATE) {
     })
 
     onKeyPress("w", () => {
+        play("jump_sound", {volume: 2})
+
         if (player.pos.x > 416 && player.pos.x < 432) {
             go("sectionholes", STATE);
         }
@@ -214,6 +219,7 @@ export default function (STATE) {
     }
 
     player.onCollide("scissor_item", (scissor) => {
+        play("collect_sound", {volume: 5})
         // text
         const textbg = add([
             rect(160, 8),
@@ -254,6 +260,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("f") && player.isColliding(vine1)) {
                 if (STATE.scissor_item.collected && !STATE.vine_1) {
+                    play("snip_sound", {volume: 5})
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -301,6 +308,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("f") && player.isColliding(vine2)) {
                 if (STATE.scissor_item.collected && !STATE.vine_2) {
+                    play("snip_sound", {volume: 5})
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -348,6 +356,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("f") && player.isColliding(vine3)) {
                 if (STATE.scissor_item.collected && !STATE.vine_3) {
+                    play("snip_sound", {volume: 5})
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -395,6 +404,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("f") && player.isColliding(vine4)) {
                 if (STATE.scissor_item.collected && !STATE.vine_4) {
+                    play("snip_sound", {volume: 5})
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -442,6 +452,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("f") && player.isColliding(vine5)) {
                 if (STATE.scissor_item.collected && !STATE.vine_5) {
+                    play("snip_sound", {volume: 5})
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -492,6 +503,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("f") && player.isColliding(vine6)) {
                 if (STATE.scissor_item.collected && !STATE.vine_6) {
+                    play("snip_sound", {volume: 5})
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -539,6 +551,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("f") && player.isColliding(vine7)) {
                 if (STATE.scissor_item.collected && !STATE.vine_7) {
+                    play("snip_sound", {volume: 5})
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -586,6 +599,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("f") && player.isColliding(vine8)) {
                 if (STATE.scissor_item.collected && !STATE.vine_8) {
+                    play("snip_sound", {volume: 5})
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -633,6 +647,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("f") && player.isColliding(vine9)) {
                 if (STATE.scissor_item.collected && !STATE.vine_9) {
+                    play("snip_sound", {volume: 5})
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -680,6 +695,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("f") && player.isColliding(vine10)) {
                 if (STATE.scissor_item.collected && !STATE.vine_10) {
+                    play("snip_sound", {volume: 5})
                     // text
                     const textbg = add([
                         rect(16, 8),

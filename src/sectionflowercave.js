@@ -17,6 +17,8 @@ export default function (STATE) {
     loadSprite("cave_bg", "./sprites/assets/backgrounds/cave_bg.png");
     loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
     loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
+    loadSound("snip_sound", "./sprites/assets/items/snip_sound_trimmed.mp3");
+    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
 
 
     let SPEED = 75;
@@ -130,6 +132,8 @@ export default function (STATE) {
         // if( player.isGrounded()) {
         //     player.jump(330);
         // }
+        play("jump_sound", {volume: 2})
+
         player.doubleJump(330)
         player.play("jump")
     });
@@ -152,6 +156,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("f") && player.isColliding(caveflower)) {
                 if (STATE.scissor_item.collected && !STATE.cave_flower) {
+                    play("snip_sound", {volume: 5})
                     // text
                     const textbg = add([
                         rect(85, 8),

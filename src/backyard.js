@@ -15,7 +15,7 @@ export default function (STATE) {
     loadSprite("player", "./sprites/assets/characters/player.png");
     loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
     loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
-
+    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
 
     let SPEED = 75;
     setGravity(1850);
@@ -99,6 +99,7 @@ export default function (STATE) {
     })
 
     onKeyPress("w", () => {
+        play("jump_sound", {volume: 2})
         player.doubleJump(330)
         player.play("jump")
     });

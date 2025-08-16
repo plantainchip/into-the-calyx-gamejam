@@ -15,6 +15,8 @@ export default function(STATE){
     loadSprite("flower", "./sprites/assets/items/flower.png");
     loadSprite("cave_bg", "./sprites/assets/backgrounds/cave_bg.png");
     loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
+    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
+
 
     let SPEED = 75;
     setGravity(1850);
@@ -102,6 +104,8 @@ export default function(STATE){
     })
 
     onKeyPress("w", () => {
+        play("jump_sound", {volume: 2})
+
         if(player.pos.x > 128 && player.pos.x < 144){
             go("sectionholes", STATE);
         }

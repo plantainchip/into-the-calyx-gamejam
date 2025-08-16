@@ -5,9 +5,9 @@ export default function(STATE){
     loadAseprite("opening_cutscene", "./sprites/assets/animations/opening_cutscene.png", "./sprites/assets/animations/opening_cutscene.json");
     scene("backyard", backyard);
 
-    loadMusic("bg_music", "./sprites/assets/items/caves-of-dawn-10376.mp3");
+    loadSound("bg_music", "./sprites/assets/items/caves-of-dawn-10376.mp3");
     const music = play("bg_music",{
-        volume:0.1,
+        volume:0.2,
         loop:true
     })
 

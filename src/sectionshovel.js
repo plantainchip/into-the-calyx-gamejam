@@ -17,6 +17,11 @@ export default function (STATE) {
     loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
     loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
 
+    loadSound("dig_sound", "./sprites/assets/items/dig_sound_trimmed.mp3");
+    loadSound("collect_sound", "./sprites/assets/items/item_collect_trimmed.mp3");
+    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
+
+
 
     loadSprite("shovel", "sprites/assets/items/shovel.png");
     loadSprite("dirt", "sprites/assets/items/dirt.png");
@@ -165,6 +170,7 @@ export default function (STATE) {
         // if( player.isGrounded()) {
         //     player.jump(330);
         // }
+        play("jump_sound", {volume: 2})
         player.doubleJump(330)
         player.play("jump")
     });
@@ -211,6 +217,7 @@ export default function (STATE) {
     }
 
     player.onCollide("shovel_item", (shovel) => {
+        play("collect_sound", {volume: 5})
         // text
         const flowertextbg = add([
             rect(144, 8),
@@ -249,6 +256,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("s") && player.isOverlapping(dirt1)) {
                 if (STATE.shovel_item.collected && !STATE.dirt_1) {
+                    play("dig_sound", {volume: 5})
                     // text
                     const flowertextbg = add([
                         rect(114, 8),
@@ -301,6 +309,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("s") && player.isOverlapping(dirt2)) {
                 if (STATE.shovel_item.collected && !STATE.dirt_2) {
+                    play("dig_sound", {volume: 5})
                     // text
                     const flowertextbg = add([
                         rect(48, 8),
@@ -350,6 +359,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("s") && player.isOverlapping(dirt3)) {
                 if (STATE.shovel_item.collected && !STATE.dirt_3) {
+                    play("dig_sound", {volume: 5})
                     // text
                     const flowertextbg = add([
                         rect(48, 8),

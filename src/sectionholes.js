@@ -18,7 +18,10 @@ export default function(STATE){
     loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
     loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
     loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
-    
+    loadSound("dig_sound", "./sprites/assets/items/dig_sound_trimmed.mp3");
+    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
+
+
     let SPEED = 75;
     setGravity(1850);
 
@@ -177,6 +180,8 @@ export default function(STATE){
         // if( player.isGrounded()) {
         //     player.jump(330);
         // }
+        play("jump_sound", {volume: 2})
+
         player.doubleJump(330)
         player.play("jump")
     });
@@ -240,6 +245,7 @@ export default function(STATE){
         onUpdate(() => {
             if (isKeyPressed("s") && player.isOverlapping(dirt4)) {
                 if (STATE.shovel_item.collected && !STATE.dirt_4) {
+                    play("dig_sound", {volume: 5})
                     // text
                     const flowertextbg = add([
                         rect(160, 8),
@@ -287,6 +293,7 @@ export default function(STATE){
         onUpdate(() => {
             if (isKeyPressed("s") && player.isOverlapping(dirt5)) {
                 if (STATE.shovel_item.collected && !STATE.dirt_5) {
+                    play("dig_sound", {volume: 5})
                     // text
                     const flowertextbg = add([
                         rect(160, 8),
