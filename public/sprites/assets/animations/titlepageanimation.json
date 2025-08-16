@@ -374,6 +374,7 @@
    { "name": "background1-moon", "opacity": 255, "blendMode": "normal" },
    { "name": "Tilemap 1", "opacity": 255, "blendMode": "normal" },
    { "name": "words", "opacity": 255, "blendMode": "normal" },
+   { "name": "flowers", "opacity": 255, "blendMode": "normal" },
    { "name": "wind", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
