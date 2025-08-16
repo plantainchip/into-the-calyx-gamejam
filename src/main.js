@@ -8,7 +8,7 @@ kaplay({
     width: 160,
     height: 144,
     background: [27,27,27],
-    scale:3
+    scale:4
 })
 
 
