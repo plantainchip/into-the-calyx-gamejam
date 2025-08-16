@@ -396,7 +396,7 @@ export default function (STATE) {
     //checks if you get flowers to get to final cutscene
     onUpdate(() => {
         console.log("final cutscene")
-        if (STATE.flowers.length >= 2) {
+        if (STATE.flowers.length > 2) {
 
             // wait(3, () => {
             //     go("ending", STATE)

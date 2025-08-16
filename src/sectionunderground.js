@@ -227,7 +227,7 @@ export default function (STATE) {
             color(255, 255, 255)
         ])
         const found = add([
-            text("found shears. press f to cut vines or enemies!", {
+            text("found shears. press space to cut vines", {
                 size: 8,
                 font:"font"
             }),
@@ -258,7 +258,7 @@ export default function (STATE) {
 
     player.onCollide("vine_1", (vine1) => {
         onUpdate(() => {
-            if (isKeyPressed("f") && player.isColliding(vine1)) {
+            if (isKeyPressed("space") && player.isColliding(vine1)) {
                 if (STATE.scissor_item.collected && !STATE.vine_1) {
                     play("snip_sound", {volume: 5})
                     // text
@@ -306,7 +306,7 @@ export default function (STATE) {
 
     player.onCollide("vine_2", (vine2) => {
         onUpdate(() => {
-            if (isKeyPressed("f") && player.isColliding(vine2)) {
+            if (isKeyPressed("space") && player.isColliding(vine2)) {
                 if (STATE.scissor_item.collected && !STATE.vine_2) {
                     play("snip_sound", {volume: 5})
                     // text
@@ -354,7 +354,7 @@ export default function (STATE) {
 
     player.onCollide("vine_3", (vine3) => {
         onUpdate(() => {
-            if (isKeyPressed("f") && player.isColliding(vine3)) {
+            if (isKeyPressed("space") && player.isColliding(vine3)) {
                 if (STATE.scissor_item.collected && !STATE.vine_3) {
                     play("snip_sound", {volume: 5})
                     // text
@@ -402,7 +402,7 @@ export default function (STATE) {
 
     player.onCollide("vine_4", (vine4) => {
         onUpdate(() => {
-            if (isKeyPressed("f") && player.isColliding(vine4)) {
+            if (isKeyPressed("space") && player.isColliding(vine4)) {
                 if (STATE.scissor_item.collected && !STATE.vine_4) {
                     play("snip_sound", {volume: 5})
                     // text
@@ -450,7 +450,7 @@ export default function (STATE) {
 
     player.onCollide("vine_5", (vine5) => {
         onUpdate(() => {
-            if (isKeyPressed("f") && player.isColliding(vine5)) {
+            if (isKeyPressed("space") && player.isColliding(vine5)) {
                 if (STATE.scissor_item.collected && !STATE.vine_5) {
                     play("snip_sound", {volume: 5})
                     // text
@@ -501,7 +501,7 @@ export default function (STATE) {
 
     player.onCollide("vine_6", (vine6) => {
         onUpdate(() => {
-            if (isKeyPressed("f") && player.isColliding(vine6)) {
+            if (isKeyPressed("space") && player.isColliding(vine6)) {
                 if (STATE.scissor_item.collected && !STATE.vine_6) {
                     play("snip_sound", {volume: 5})
                     // text
@@ -549,7 +549,7 @@ export default function (STATE) {
 
     player.onCollide("vine_7", (vine7) => {
         onUpdate(() => {
-            if (isKeyPressed("f") && player.isColliding(vine7)) {
+            if (isKeyPressed("space") && player.isColliding(vine7)) {
                 if (STATE.scissor_item.collected && !STATE.vine_7) {
                     play("snip_sound", {volume: 5})
                     // text
@@ -597,7 +597,7 @@ export default function (STATE) {
 
     player.onCollide("vine_8", (vine8) => {
         onUpdate(() => {
-            if (isKeyPressed("f") && player.isColliding(vine8)) {
+            if (isKeyPressed("space") && player.isColliding(vine8)) {
                 if (STATE.scissor_item.collected && !STATE.vine_8) {
                     play("snip_sound", {volume: 5})
                     // text
@@ -645,7 +645,7 @@ export default function (STATE) {
 
     player.onCollide("vine_9", (vine9) => {
         onUpdate(() => {
-            if (isKeyPressed("f") && player.isColliding(vine9)) {
+            if (isKeyPressed("space") && player.isColliding(vine9)) {
                 if (STATE.scissor_item.collected && !STATE.vine_9) {
                     play("snip_sound", {volume: 5})
                     // text
@@ -693,7 +693,7 @@ export default function (STATE) {
 
     player.onCollide("vine_10", (vine10) => {
         onUpdate(() => {
-            if (isKeyPressed("f") && player.isColliding(vine10)) {
+            if (isKeyPressed("space") && player.isColliding(vine10)) {
                 if (STATE.scissor_item.collected && !STATE.vine_10) {
                     play("snip_sound", {volume: 5})
                     // text

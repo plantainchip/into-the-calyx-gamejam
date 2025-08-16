@@ -12,7 +12,7 @@ export default function(STATE){
     loadSprite("bosscave", "./sprites/assets/sections/section_boss.png");
     loadSprite("player", "./sprites/assets/characters/player.png");
     loadSprite("hand", "./sprites/assets/characters/hand.png");
-    loadSprite("flower", "./sprites/assets/items/flower.png");
+    loadSprite("chest", "./sprites/assets/items/chest.png");
     loadSprite("cave_bg", "./sprites/assets/backgrounds/cave_bg.png");
     loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
     loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
@@ -120,32 +120,51 @@ export default function(STATE){
     
 
 
-    if (!STATE.boss_1.dead) {
-        const bosshand = add([
-            sprite("hand"),
+    if (!STATE.chest_1) {
+        const chestitem = add([
+            sprite("chest"),
             pos(32, 96),
-            body(),
+            body({isStatic:true}),
             area(),
-            "boss_1"
-        ]);
+            z(15),
+            "chest_1"
+        ])
     }
 
-    player.onCollide("boss_1", (boss1) => {
+    player.onCollide("chest_1", (chest1) => {
         onUpdate(() => {
-            if (isKeyPressed("f") && player.isColliding(boss1)) {
-                if (STATE.scissor_item.collected  && !STATE.boss_1.dead) {
-                    // boss1.destroy();
-                    // STATE.boss_1.health = STATE.boss_1.health - 1;
-                    // console.log("hit");
-                    // console.log(STATE.boss_1.health);
-                    // return
-                    console.log("hit")
-                } 
-                // else {
-                //     console.log("missed");
-                //     console.log(STATE.boss_1.health);
-                //     return;
-                // }
+            if ((isKeyPressed("s") && player.isColliding(chest1)) || (isKeyPressed("space") && player.isColliding(chest1)) ) {
+                if (STATE.shovel_item.collected && STATE.scissor_item.collected && !STATE.chest_1) {
+                    play("dig_sound", {volume: 5})
+                    // text
+                    const flowertextbg = add([
+                        rect(110, 8),
+                        pos(18, 64),
+                        color(255, 255, 255)
+                    ])
+                    const foundflower = add([
+                        text("opened a chest. found a flower", {
+                            size: 8,
+                            font: "font"
+                        }),
+                        pos(20, 64),
+                        color(0, 0, 0)
+                    ])
+                    wait(3, () => {
+                        foundflower.destroy()
+                        flowertextbg.destroy()
+                    })
+                    chest1.destroy();
+                    STATE.chest_1 = true;
+                    STATE.flowers.push("chest_flower");
+                    console.log("dug some dirt. found a flower");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                } else {
+                    console.log("you need a shovel to dig");
+                    console.log("STATE.flowers.length: " + STATE.flowers.length);
+                    return
+                }
             }
         })
     })
@@ -153,7 +172,7 @@ export default function(STATE){
     //checks if you get flowers to get to final cutscene
     onUpdate(() => {
         console.log("final cutscene")
-        if (STATE.flowers.length > 1) {
+        if (STATE.flowers.length > 2) {
 
             // wait(3, () => {
             //     go("ending", STATE)
@@ -179,8 +198,8 @@ export default function(STATE){
         }
     })
 
-    
-    
+
+ 
 
 
 

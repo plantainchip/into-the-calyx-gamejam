@@ -45,6 +45,9 @@ const STATE = {
   vine_9: false,
   vine_10: false,
 
+  // chest
+  chest_1: false,
+
   //bosscave
   boss_1: {
     health: 2,

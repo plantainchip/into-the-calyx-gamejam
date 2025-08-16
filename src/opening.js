@@ -7,7 +7,7 @@ export default function(STATE){
 
     loadSound("bg_music", "./sprites/assets/items/caves-of-dawn-10376.mp3");
     const music = play("bg_music",{
-        volume:0.2,
+        volume:0.09,
         loop:true
     })
 
