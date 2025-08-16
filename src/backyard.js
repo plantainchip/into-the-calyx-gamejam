@@ -19,6 +19,7 @@ export default function (STATE) {
 
     let SPEED = 75;
     setGravity(1850);
+
     add([
         sprite("background"),
         pos(0, 0),
@@ -70,6 +71,7 @@ export default function (STATE) {
 
     onKeyPress("d", () => {
         player.play("r_run")
+        
     })
     onKeyDown("d", () => {
         player.move(SPEED, 0);

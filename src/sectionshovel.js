@@ -21,6 +21,12 @@ export default function (STATE) {
     loadSprite("shovel", "sprites/assets/items/shovel.png");
     loadSprite("dirt", "sprites/assets/items/dirt.png");
 
+    loadSound("bg_music", "./sprites/assets/items/caves-of-dawn-10376.mp3");
+    // const music = play("bg_music",{
+    //     volume:0.3,
+    //     loop:true
+    // })
+
     let SPEED = 75;
     setGravity(1850);
 

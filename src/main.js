@@ -11,6 +11,7 @@ kaplay({
     scale:3
 })
 
+
 const STATE = {
   flowers: [],
   cave_flower: false,
