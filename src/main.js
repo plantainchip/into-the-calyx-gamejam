@@ -53,13 +53,18 @@ const STATE = {
 
 }
 
-loadSprite("title", "./sprites/assets/backgrounds/ingame_titlescreen1.png")
+// loadSprite("title", "./sprites/assets/backgrounds/ingame_titlescreen1.png")
+loadAseprite("titlegif", "./sprites/assets/animations/titlepageanimation.png", "./sprites/assets/animations/titlepageanimation.json")
+
 scene("opening", opening);
 
 scene("start", (STATE) => {
   add([
-    sprite("title"),
-    pos(0,0)
+    sprite("titlegif", {
+      anim: "titlescreen"
+    }),
+    pos(0,0),
+    animate()
   ]);
 
   // onClick(() => go("opening",STATE));
