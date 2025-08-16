@@ -11,11 +11,11 @@ export default function (STATE) {
     scene("ending", ending);
 
     loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
-    loadSprite("background", "sprites/assets/backgrounds/background2_moonlight.png");
-    loadSprite("area_underground", "sprites/assets/sections/section_underground.png");
-    loadSprite("player", "sprites/assets/characters/player.png");
-    loadSprite("scissors", "sprites/assets/items/scissors.png");
-    loadSprite("vine", "sprites/assets/items/vines.png");
+    loadSprite("background", "./sprites/assets/backgrounds/background2_moonlight.png");
+    loadSprite("area_underground", "./sprites/assets/sections/section_underground.png");
+    loadSprite("player", "./sprites/assets/characters/player.png");
+    loadSprite("scissors", "./sprites/assets/items/scissors.png");
+    loadSprite("vine", "./sprites/assets/items/vines.png");
     loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
     loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
     loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");

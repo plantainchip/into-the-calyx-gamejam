@@ -8,12 +8,12 @@ export default function(STATE){
     
     // you can start making your scene in this function.
     loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
-    loadSprite("background", "sprites/assets/backgrounds/background1_moonlight.png");
-    loadSprite("bosscave", "sprites/assets/sections/section_boss.png");
-    loadSprite("player", "sprites/assets/characters/player.png");
-    loadSprite("hand", "sprites/assets/characters/hand.png");
-    loadSprite("flower", "sprites/assets/items/flower.png");
-    loadSprite("cave_bg", "sprites/assets/backgrounds/cave_bg.png");
+    loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
+    loadSprite("bosscave", "./sprites/assets/sections/section_boss.png");
+    loadSprite("player", "./sprites/assets/characters/player.png");
+    loadSprite("hand", "./sprites/assets/characters/hand.png");
+    loadSprite("flower", "./sprites/assets/items/flower.png");
+    loadSprite("cave_bg", "./sprites/assets/backgrounds/cave_bg.png");
     loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
 
     let SPEED = 75;
