@@ -1,7 +1,10 @@
 import "kaplay/global";
 import sectionshovel from "./sectionshovel";
 import ending from "./ending";
-
+import backyardsprite from "/sprites/assets/sections/section1_backyard.png"
+import backgroundsprite from "/sprites/assets/backgrounds/background1_moonlight.png"
+import playeranimation_png from "/sprites/assets/animations/player_animation.png"
+import playeranimation_json from "/sprites/assets/animations/player_animation.json?url"
 
 
 export default function (STATE) {
@@ -10,11 +13,10 @@ export default function (STATE) {
 
     // you can start making your scene in this function.
     loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
-    loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
-    loadSprite("backyard", "./sprites/assets/sections/section1_backyard.png");
-    loadSprite("player", "./sprites/assets/characters/player.png");
+    loadSprite("background", backgroundsprite);
+    loadSprite("backyard", backyardsprite);
     loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
-    loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
+    loadAseprite("player_animation", playeranimation_png, playeranimation_json);
     loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
 
     let SPEED = 75;
@@ -59,8 +61,8 @@ export default function (STATE) {
 
     // adding player =====================================
     const player = add([
-        sprite("player_animation",{
-            anim:"r_idle"
+        sprite("player_animation", {
+            anim: "r_idle"
         }),
         pos(35, 96),
         body(),
@@ -71,7 +73,7 @@ export default function (STATE) {
 
     onKeyPress("d", () => {
         player.play("r_run")
-        
+
     })
     onKeyDown("d", () => {
         player.move(SPEED, 0);
@@ -99,9 +101,9 @@ export default function (STATE) {
     })
 
     onKeyPress("w", () => {
-        play("jump_sound", {volume: 2})
         player.doubleJump(330)
         player.play("jump")
+        play("jump_sound", { volume: 2 })
     });
     onKeyRelease("w", () => {
         player.play("r_idle")
