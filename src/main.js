@@ -77,7 +77,8 @@ scene("start", (STATE) => {
 
 })
 
-go("start",STATE);
+// go("start",STATE);
+onLoad(() => go("start", STATE))
 
 
 // go("opening", STATE);
