@@ -16,6 +16,8 @@ import player_animation_json from "/sprites/assets/animations/player_animation.j
 
 import shearsprite from "/sprites/assets/items/scissors.png";
 import shovelsprite from "/sprites/assets/sections/section_shovel.png";
+import game_ending_png from "/sprites/assets/animations/ending_cutscene.png";
+import game_ending_json from "/sprites/assets/animations/ending_cutscene.json?url";
 
 kaplay({
   width: 160,
@@ -101,6 +103,7 @@ loadAseprite("player_animation", player_animation_png, player_animation_json);
 loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
 loadSound("snip_sound", "./sprites/assets/items/snip_sound_trimmed.mp3");
 loadSound("collect_sound", "./sprites/assets/items/item_collect_trimmed.mp3");
+loadAseprite("ending_cutscene", game_ending_png, game_ending_json);
 
 
 
