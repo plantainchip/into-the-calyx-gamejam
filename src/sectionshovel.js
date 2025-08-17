@@ -2,6 +2,10 @@ import "kaplay/global";
 import sectionholes from "./sectionholes";
 import backyard from "./backyard";
 import ending from "./ending";
+import player_animation_png from "/sprites/assets/animations/player_animation.png";
+import player_animation_json from "/sprites/assets/animations/player_animation.json?url";
+import shovelsprite from "/sprites/assets/sections/section_shovel.png";
+
 
 export default function (STATE) {
     scene("sectionholes", sectionholes);
@@ -10,11 +14,11 @@ export default function (STATE) {
 
     loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
     loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
-    loadSprite("area_shovel", "./sprites/assets/sections/section_shovel.png");
+    loadSprite("area_shovel", shovelsprite);
     loadSprite("player", "./sprites/assets/characters/player.png");
     loadSprite("middle", "./sprites/assets/backgrounds/bg_mid.png");
     loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
-    loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
+    loadAseprite("player_animation", player_animation_png, player_animation_json);
     loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
 
     loadSound("dig_sound", "./sprites/assets/items/dig_sound_trimmed.mp3");
