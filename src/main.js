@@ -1,15 +1,108 @@
 import kaplay from "kaplay";
-import "kaplay/global"; 
-import backyardscene from "./backyard";
-import opening from "./opening";
+import "kaplay/global";
 
+import backyard from "./backyard";
+import opening from "./opening";
+import sectionholes from "./sectionholes";
+import ending from "./ending";
+import sectionunderground from "./sectionunderground";
+import sectionshovel from "./sectionshovel";
+import sectionbosscave from "./sectionbosscave";
+import sectionflowercave from "./sectionflowercave";
+
+
+import player_animation_png from "/sprites/assets/animations/player_animation.png";
+import player_animation_json from "/sprites/assets/animations/player_animation.json?url";
+
+import shearsprite from "/sprites/assets/items/scissors.png";
+import shovelsprite from "/sprites/assets/sections/section_shovel.png";
 
 kaplay({
-    width: 160,
-    height: 144,
-    background: [27,27,27],
-    scale:4
+  width: 160,
+  height: 144,
+  background: [27, 27, 27],
+  scale: 4
 })
+
+loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
+loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
+loadSprite("backyard", "./sprites/assets/sections/section1_backyard.png");
+loadSprite("player", "./sprites/assets/characters/player.png");
+loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+loadAseprite("player_animation", player_animation_png, player_animation_json);
+loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
+
+loadAseprite("opening_cutscene", "./sprites/assets/animations/opening_cutscene.png", "./sprites/assets/animations/opening_cutscene.json");
+// scene("backyard", backyard);
+
+loadSound("bg_music", "./sprites/assets/items/caves-of-dawn-10376.mp3");
+
+
+
+loadSprite("bosscave", "./sprites/assets/sections/section_boss.png");
+
+loadSprite("hand", "./sprites/assets/characters/hand.png");
+loadSprite("chest", "./sprites/assets/items/chest.png");
+loadSprite("cave_bg", "./sprites/assets/backgrounds/cave_bg.png");
+loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
+
+
+
+
+loadSprite("flowercave", "./sprites/assets/sections/section_flowercave.png");
+
+loadSprite("flower", "./sprites/assets/items/flower.png");
+loadSprite("cave_bg", "./sprites/assets/backgrounds/cave_bg.png");
+
+loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
+loadSound("snip_sound", "./sprites/assets/items/snip_sound_trimmed.mp3");
+
+
+
+
+loadSprite("area_holes", "./sprites/assets/sections/section_holes.png");
+
+loadSprite("dirt", "./sprites/assets/items/dirt.png");
+
+loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
+loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
+loadSound("dig_sound", "./sprites/assets/items/dig_sound_trimmed.mp3");
+
+
+
+
+
+loadSprite("area_shovel", shovelsprite);
+
+loadSprite("middle", "./sprites/assets/backgrounds/bg_mid.png");
+
+loadAseprite("player_animation", player_animation_png, player_animation_json);
+loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
+
+loadSound("dig_sound", "./sprites/assets/items/dig_sound_trimmed.mp3");
+loadSound("collect_sound", "./sprites/assets/items/item_collect_trimmed.mp3");
+
+
+
+
+loadSprite("shovel", "sprites/assets/items/shovel.png");
+loadSprite("dirt", "sprites/assets/items/dirt.png");
+
+
+
+
+loadSprite("background2", "./sprites/assets/backgrounds/background2_moonlight.png");
+loadSprite("area_underground", "./sprites/assets/sections/section_underground.png");
+
+loadSprite("scissors", shearsprite);
+loadSprite("vine", "./sprites/assets/items/vines.png");
+
+loadAseprite("player_animation", player_animation_png, player_animation_json);
+loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
+loadSound("snip_sound", "./sprites/assets/items/snip_sound_trimmed.mp3");
+loadSound("collect_sound", "./sprites/assets/items/item_collect_trimmed.mp3");
+
+
 
 
 const STATE = {
@@ -56,23 +149,33 @@ const STATE = {
 
 }
 
+
+
 // loadSprite("title", "./sprites/assets/backgrounds/ingame_titlescreen1.png")
 loadAseprite("titlegif", "./sprites/assets/animations/titlepageanimation.png", "./sprites/assets/animations/titlepageanimation.json")
 
+// scene("opening", opening);
+scene("sectionholes", sectionholes);
+scene("ending", ending)
+scene("backyard", backyard);
+scene("sectionunderground", sectionunderground);
+scene("sectionshovel", sectionshovel);
+scene("sectionbosscave", sectionbosscave);
 scene("opening", opening);
+scene("sectionflowercave", sectionflowercave);
 
 scene("start", (STATE) => {
   add([
     sprite("titlegif", {
       anim: "titlescreen"
     }),
-    pos(0,0),
+    pos(0, 0),
     animate()
   ]);
 
   // onClick(() => go("opening",STATE));
   onKeyPress((key) => {
-    go("opening",STATE);
+    go("opening", STATE);
   })
 
 })

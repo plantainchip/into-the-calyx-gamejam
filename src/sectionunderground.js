@@ -1,37 +1,37 @@
 import "kaplay/global";
-import sectionholes from "./sectionholes";
-import sectionunderground from "./sectionunderground";
-import sectionflowercave from "./sectionflowercave";
-import ending from "./ending";
-import player_animation_png from "/sprites/assets/animations/player_animation.png";
-import player_animation_json from "/sprites/assets/animations/player_animation.json?url";
+// import sectionholes from "./sectionholes";
+// import sectionunderground from "./sectionunderground";
+// import sectionflowercave from "./sectionflowercave";
+// import ending from "./ending";
+// import player_animation_png from "/sprites/assets/animations/player_animation.png";
+// import player_animation_json from "/sprites/assets/animations/player_animation.json?url";
 import shearsprite from "/sprites/assets/items/scissors.png";
 
 export default function (STATE) {
-    scene("sectionholes", sectionholes);
-    scene("sectionunderground", sectionunderground);
-    scene("sectionflowercave", sectionflowercave);
-    scene("ending", ending);
+    // scene("sectionholes", sectionholes);
+    // scene("sectionunderground", sectionunderground);
+    // scene("sectionflowercave", sectionflowercave);
+    // scene("ending", ending);
 
-    loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
-    loadSprite("background", "./sprites/assets/backgrounds/background2_moonlight.png");
-    loadSprite("area_underground", "./sprites/assets/sections/section_underground.png");
-    loadSprite("player", "./sprites/assets/characters/player.png");
-    loadSprite("scissors", shearsprite);
-    loadSprite("vine", "./sprites/assets/items/vines.png");
-    loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
-    loadAseprite("player_animation", player_animation_png, player_animation_json);
-    loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
-    loadSound("snip_sound", "./sprites/assets/items/snip_sound_trimmed.mp3");
-    loadSound("collect_sound", "./sprites/assets/items/item_collect_trimmed.mp3");
-    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
+    // loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
+    // loadSprite("background", "./sprites/assets/backgrounds/background2_moonlight.png");
+    // loadSprite("area_underground", "./sprites/assets/sections/section_underground.png");
+    // loadSprite("player", "./sprites/assets/characters/player.png");
+    // loadSprite("scissors", shearsprite);
+    // loadSprite("vine", "./sprites/assets/items/vines.png");
+    // loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+    // loadAseprite("player_animation", player_animation_png, player_animation_json);
+    // loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
+    // loadSound("snip_sound", "./sprites/assets/items/snip_sound_trimmed.mp3");
+    // loadSound("collect_sound", "./sprites/assets/items/item_collect_trimmed.mp3");
+    // loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
 
 
     let SPEED = 75;
     setGravity(1850);
 
     const moon_bg = add([
-        sprite("background"),
+        sprite("background2"),
         pos(0, 0),
     ]);
 

@@ -1,22 +1,24 @@
 import "kaplay/global";
-import sectionshovel from "./sectionshovel";
-import ending from "./ending";
-import player_animation_png from "/sprites/assets/animations/player_animation.png";
-import player_animation_json from "/sprites/assets/animations/player_animation.json?url"
+// import sectionshovel from "./sectionshovel";
+// import ending from "./ending";
+
+//put this back if anythig
+// import player_animation_png from "/sprites/assets/animations/player_animation.png";
+// import player_animation_json from "/sprites/assets/animations/player_animation.json?url";
 
 
 export default function (STATE) {
-    scene("sectionshovel", sectionshovel);
-    scene("ending", ending);
+    // scene("sectionshovel", sectionshovel);
+    // scene("ending", ending);
 
     // you can start making your scene in this function.
-    loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
-    loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
-    loadSprite("backyard", "./sprites/assets/sections/section1_backyard.png");
-    loadSprite("player", "./sprites/assets/characters/player.png");
-    loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
-    loadAseprite("player_animation", player_animation_png, player_animation_json);
-    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
+    // loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
+    // loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
+    // loadSprite("backyard", "./sprites/assets/sections/section1_backyard.png");
+    // loadSprite("player", "./sprites/assets/characters/player.png");
+    // loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+    // loadAseprite("player_animation", player_animation_png, player_animation_json);
+    // loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
 
     let SPEED = 75;
     setGravity(1850);
@@ -67,6 +69,7 @@ export default function (STATE) {
         body(),
         area(),
         doubleJump(2),
+        z(10),
         animate()
     ]);
 

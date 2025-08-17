@@ -1,24 +1,24 @@
 import "kaplay/global";
-import sectionunderground from "./sectionunderground";
-import backyard from "./backyard";
-import ending from "./ending";
+// import sectionunderground from "./sectionunderground";
+// import backyard from "./backyard";
+// import ending from "./ending";
 
 export default function (STATE) {
-    scene("sectionunderground", sectionunderground);
-    scene("backyard", backyard);
-    scene("ending", ending);
+    // scene("sectionunderground", sectionunderground);
+    // scene("backyard", backyard);
+    // scene("ending", ending);
 
     // you can start making your scene in this function.
-    loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
-    loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
-    loadSprite("flowercave", "./sprites/assets/sections/section_flowercave.png");
-    loadSprite("player", "./sprites/assets/characters/player.png");
-    loadSprite("flower", "./sprites/assets/items/flower.png");
-    loadSprite("cave_bg", "./sprites/assets/backgrounds/cave_bg.png");
-    loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
-    loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
-    loadSound("snip_sound", "./sprites/assets/items/snip_sound_trimmed.mp3");
-    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
+    // loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
+    // loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
+    // loadSprite("flowercave", "./sprites/assets/sections/section_flowercave.png");
+    // loadSprite("player", "./sprites/assets/characters/player.png");
+    // loadSprite("flower", "./sprites/assets/items/flower.png");
+    // loadSprite("cave_bg", "./sprites/assets/backgrounds/cave_bg.png");
+    // loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+    // loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
+    // loadSound("snip_sound", "./sprites/assets/items/snip_sound_trimmed.mp3");
+    // loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
 
 
     let SPEED = 75;

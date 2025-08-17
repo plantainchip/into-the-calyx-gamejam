@@ -1,25 +1,25 @@
 import "kaplay/global";
-import sectionshovel from "./sectionshovel";
-import sectionunderground from "./sectionunderground";
-import sectionbosscave from "./sectionbosscave";
-import ending from "./ending";
+// import sectionshovel from "./sectionshovel";
+// import sectionunderground from "./sectionunderground";
+// import sectionbosscave from "./sectionbosscave";
+// import ending from "./ending";
 
 export default function(STATE){
-    scene("sectionshovel", sectionshovel);
-    scene("sectionunderground", sectionunderground);
-    scene("sectionbosscave", sectionbosscave);
-    scene("ending", ending)
+    // scene("sectionshovel", sectionshovel);
+    // scene("sectionunderground", sectionunderground);
+    // scene("sectionbosscave", sectionbosscave);
+    // scene("ending", ending)
 
-    loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
-    loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
-    loadSprite("area_holes", "./sprites/assets/sections/section_holes.png");
-    loadSprite("player", "./sprites/assets/characters/player.png");
-    loadSprite("dirt", "./sprites/assets/items/dirt.png");
-    loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
-    loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
-    loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
-    loadSound("dig_sound", "./sprites/assets/items/dig_sound_trimmed.mp3");
-    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
+    // loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
+    // loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
+    // loadSprite("area_holes", "./sprites/assets/sections/section_holes.png");
+    // loadSprite("player", "./sprites/assets/characters/player.png");
+    // loadSprite("dirt", "./sprites/assets/items/dirt.png");
+    // loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+    // loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
+    // loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
+    // loadSound("dig_sound", "./sprites/assets/items/dig_sound_trimmed.mp3");
+    // loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
 
 
     let SPEED = 75;

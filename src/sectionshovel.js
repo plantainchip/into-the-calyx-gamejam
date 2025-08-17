@@ -1,36 +1,36 @@
 import "kaplay/global";
-import sectionholes from "./sectionholes";
-import backyard from "./backyard";
-import ending from "./ending";
+// import sectionholes from "./sectionholes";
+// import backyard from "./backyard";
+// import ending from "./ending";
 import player_animation_png from "/sprites/assets/animations/player_animation.png";
 import player_animation_json from "/sprites/assets/animations/player_animation.json?url";
 import shovelsprite from "/sprites/assets/sections/section_shovel.png";
 
 
 export default function (STATE) {
-    scene("sectionholes", sectionholes);
-    scene("backyard", backyard);
-    scene("ending", ending)
+    // scene("sectionholes", sectionholes);
+    // scene("backyard", backyard);
+    // scene("ending", ending)
 
-    loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
-    loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
-    loadSprite("area_shovel", shovelsprite);
-    loadSprite("player", "./sprites/assets/characters/player.png");
-    loadSprite("middle", "./sprites/assets/backgrounds/bg_mid.png");
-    loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
-    loadAseprite("player_animation", player_animation_png, player_animation_json);
-    loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
+    // loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
+    // loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
+    // loadSprite("area_shovel", shovelsprite);
+    // loadSprite("player", "./sprites/assets/characters/player.png");
+    // loadSprite("middle", "./sprites/assets/backgrounds/bg_mid.png");
+    // loadFont("font", "./sprites/assets/font/Tiny5-Regular.ttf");
+    // loadAseprite("player_animation", player_animation_png, player_animation_json);
+    // loadAseprite("wind", "./sprites/assets/animations/wind.png", "./sprites/assets/animations/wind.json");
 
-    loadSound("dig_sound", "./sprites/assets/items/dig_sound_trimmed.mp3");
-    loadSound("collect_sound", "./sprites/assets/items/item_collect_trimmed.mp3");
-    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
+    // loadSound("dig_sound", "./sprites/assets/items/dig_sound_trimmed.mp3");
+    // loadSound("collect_sound", "./sprites/assets/items/item_collect_trimmed.mp3");
+    // loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
 
 
 
-    loadSprite("shovel", "sprites/assets/items/shovel.png");
-    loadSprite("dirt", "sprites/assets/items/dirt.png");
+    // loadSprite("shovel", "sprites/assets/items/shovel.png");
+    // loadSprite("dirt", "sprites/assets/items/dirt.png");
 
-    loadSound("bg_music", "./sprites/assets/items/caves-of-dawn-10376.mp3");
+    // loadSound("bg_music", "./sprites/assets/items/caves-of-dawn-10376.mp3");
     // const music = play("bg_music",{
     //     volume:0.3,
     //     loop:true

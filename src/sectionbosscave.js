@@ -1,21 +1,21 @@
 import "kaplay/global";
-import sectionholes from "./sectionholes";
-import ending from "./ending";
+// import sectionholes from "./sectionholes";
+// import ending from "./ending";
 
 export default function(STATE){
-    scene("sectionholes", sectionholes);
-    scene ("ending", ending)
+    // scene("sectionholes", sectionholes);
+    // scene ("ending", ending)
     
     // you can start making your scene in this function.
-    loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
-    loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
-    loadSprite("bosscave", "./sprites/assets/sections/section_boss.png");
-    loadSprite("player", "./sprites/assets/characters/player.png");
-    loadSprite("hand", "./sprites/assets/characters/hand.png");
-    loadSprite("chest", "./sprites/assets/items/chest.png");
-    loadSprite("cave_bg", "./sprites/assets/backgrounds/cave_bg.png");
-    loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
-    loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
+    // loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
+    // loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
+    // loadSprite("bosscave", "./sprites/assets/sections/section_boss.png");
+    // loadSprite("player", "./sprites/assets/characters/player.png");
+    // loadSprite("hand", "./sprites/assets/characters/hand.png");
+    // loadSprite("chest", "./sprites/assets/items/chest.png");
+    // loadSprite("cave_bg", "./sprites/assets/backgrounds/cave_bg.png");
+    // loadAseprite("player_animation", "./sprites/assets/animations/player_animation.png", "./sprites/assets/animations/player_animation.json");
+    // loadSound("jump_sound", "./sprites/assets/items/run_sound_trimmed.mp3");
 
 
     let SPEED = 75;
