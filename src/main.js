@@ -4,7 +4,7 @@ import "kaplay/global";
 import backyard from "./backyard";
 import opening from "./opening";
 import sectionholes from "./sectionholes";
-import ending from "./ending";
+// import ending from "./ending";
 import sectionunderground from "./sectionunderground";
 import sectionshovel from "./sectionshovel";
 import sectionbosscave from "./sectionbosscave";
@@ -19,12 +19,20 @@ import shovelsprite from "/sprites/assets/sections/section_shovel.png";
 import game_ending_png from "/sprites/assets/animations/ending_cutscene.png";
 import game_ending_json from "/sprites/assets/animations/ending_cutscene.json?url";
 
+import ending from "./ending";
+import ending2 from "./ending2";
+import ending3 from "./ending3";
+
+
 kaplay({
   width: 160,
   height: 144,
   background: [27, 27, 27],
   scale: 4
 })
+    loadAseprite("ending_cutscene_part1", "./sprites/assets/animations/ending_cutscene_part1.png", "./sprites/assets/animations/ending_cutscene_part1.json");
+    loadAseprite("ending_cutscene_part2", "./sprites/assets/animations/ending_cutscene_part2.png", "./sprites/assets/animations/ending_cutscene_part2.json");
+    loadAseprite("ending_cutscene_part3", "./sprites/assets/animations/ending_cutscene_part3.png", "./sprites/assets/animations/ending_cutscene_part3.json");
 
 loadAseprite("warp_cutscene", "./sprites/assets/animations/warp_cutscene.png", "./sprites/assets/animations/warp_cutscene.json");
 loadSprite("background", "./sprites/assets/backgrounds/background1_moonlight.png");
@@ -166,6 +174,9 @@ scene("sectionshovel", sectionshovel);
 scene("sectionbosscave", sectionbosscave);
 scene("opening", opening);
 scene("sectionflowercave", sectionflowercave);
+scene("ending2", ending2)
+scene("ending3", ending3)
+
 
 scene("start", (STATE) => {
   add([
