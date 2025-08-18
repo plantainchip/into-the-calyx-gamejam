@@ -39,25 +39,25 @@ export default function (STATE) {
     let SPEED = 75;
     setGravity(1850);
 
-    onLoad(()=>{
+    onLoad(() => {
         const moon_bg = add([
             sprite("background"),
             pos(0, 0),
             // body({isStatic:true})
         ]);
-    
+
         // const middle = add([
         //     sprite("middle"), 
         //     pos(0,0),
         // ]);
-    
-    
+
+
         add([
             sprite("area_shovel"),
             pos(0, 0),
             body({ isStatic: true })
         ]);
-    
+
         // adding platform ====================================
         add([
             rect(750, 32),
@@ -67,7 +67,7 @@ export default function (STATE) {
             area(),
             body({ isStatic: true }),
         ])
-    
+
         add([
             rect(32, 16),
             pos(96, 96),
@@ -76,7 +76,7 @@ export default function (STATE) {
             area(),
             body({ isStatic: true }),
         ]);
-    
+
         add([
             rect(32, 32),
             pos(144, 80),
@@ -85,7 +85,7 @@ export default function (STATE) {
             area(),
             body({ isStatic: true }),
         ]);
-    
+
         add([
             rect(32, 16),
             pos(224, 96),
@@ -94,7 +94,7 @@ export default function (STATE) {
             area(),
             body({ isStatic: true }),
         ]);
-    
+
         add([
             rect(16, 16),
             pos(400, 96),
@@ -103,7 +103,7 @@ export default function (STATE) {
             area(),
             body({ isStatic: true }),
         ]);
-    
+
         add([
             rect(128, 48),
             pos(416, 64),
@@ -112,31 +112,31 @@ export default function (STATE) {
             area(),
             body({ isStatic: true }),
         ]);
-    
-    
+
+
         add([
             sprite("wind", {
-                anim:"wind"
+                anim: "wind"
             }),
-            pos(288,0),
+            pos(288, 0),
             animate()
         ])
-    
+
         add([
             sprite("wind", {
-                anim:"wind"
+                anim: "wind"
             }),
-            pos(480,0),
+            pos(480, 0),
             animate()
         ])
-    
-    
-    
-    
+
+
+
+
         // adding player ======================================
         const player = add([
-            sprite("player_animation",{
-                anim:"r_idle"
+            sprite("player_animation", {
+                anim: "r_idle"
             }),
             pos(16, 96),
             body(),
@@ -144,47 +144,59 @@ export default function (STATE) {
             doubleJump(2),
             animate()
         ]);
-    
-        onKeyPress("d", () => {
+
+        onKeyPress(["a", "d"], (key) => {
             player.play("r_run")
+            player.flipX = key == "a"
         })
+
+        onKeyRelease(["a", "d"], (key) => {
+            player.play("r_idle")
+            player.flipX = key == "a"
+        })
+
+
+
+        // onKeyPress("d", () => {
+        //     player.play("r_run")
+        // })
         onKeyDown("d", () => {
             player.move(SPEED, 0);
             if (player.pos.x > 639) {
                 go("sectionholes", STATE);
             }
         });
-        onKeyRelease("d", () => {
-            player.play("r_idle")
-        })
-    
-        onKeyPress("a", () => {
-            player.play("l_run")
-        })
+        // onKeyRelease("d", () => {
+        //     player.play("r_idle")
+        // })
+
+        // onKeyPress("a", () => {
+        //     player.play("l_run")
+        // })
         onKeyDown("a", () => {
             player.move(-SPEED, 0);
             if (player.pos.x < -12) {
                 go("backyard", STATE);
             }
         });
-        onKeyRelease("a", () => {
-            player.play("l_idle")
-        })
-    
+        // onKeyRelease("a", () => {
+        //     player.play("l_idle")
+        // })
+
         onKeyPress("w", () => {
             // if( player.isGrounded()) {
             //     player.jump(330);
             // }
-            play("jump_sound", {volume: 2})
+            play("jump_sound", { volume: 2 })
             player.doubleJump(330)
-            player.play("jump")
+            // player.play("jump")
         });
-        onKeyRelease("w", () => {
-            player.play("r_idle")
-        })
-    
-    
-    
+        // onKeyRelease("w", () => {
+        //     player.play("r_idle")
+        // })
+
+
+
         // camera =====================================
         const original_cam_posx = player.pos.x;
         // debug.log("original cam pos x: " + original_cam_posx);
@@ -198,7 +210,7 @@ export default function (STATE) {
                 }
             }
         })
-    
+
         // parallax effect - middle layer
         // player.onUpdate(() => {
         //     if(player.pos.x < 544){
@@ -207,9 +219,9 @@ export default function (STATE) {
         //         }
         //     }
         // })
-    
+
         // items =======================================
-    
+
         if (!STATE.shovel_item.collected) {
             const shovelitem = add([
                 sprite("shovel"),
@@ -220,9 +232,9 @@ export default function (STATE) {
                 "shovel_item"
             ])
         }
-    
+
         player.onCollide("shovel_item", (shovel) => {
-            play("collect_sound", {volume: 5})
+            play("collect_sound", { volume: 5 })
             // text
             const flowertextbg = add([
                 rect(144, 8),
@@ -245,7 +257,7 @@ export default function (STATE) {
             STATE.shovel_item.collected = true;
             console.log("Collected shovel");
         })
-    
+
         if (!STATE.dirt_1) {
             const dirtitem = add([
                 sprite("dirt"),
@@ -256,12 +268,12 @@ export default function (STATE) {
                 "dirt_1"
             ])
         }
-    
+
         player.onCollide("dirt_1", (dirt1) => {
             onUpdate(() => {
                 if (isKeyPressed("s") && player.isOverlapping(dirt1)) {
                     if (STATE.shovel_item.collected && !STATE.dirt_1) {
-                        play("dig_sound", {volume: 5})
+                        play("dig_sound", { volume: 5 })
                         // text
                         const flowertextbg = add([
                             rect(114, 8),
@@ -293,12 +305,12 @@ export default function (STATE) {
                     }
                 }
             })
-    
+
         })
-    
-    
-    
-    
+
+
+
+
         if (!STATE.dirt_2) {
             const dirtitem = add([
                 sprite("dirt"),
@@ -309,12 +321,12 @@ export default function (STATE) {
                 "dirt_2"
             ])
         }
-    
+
         player.onCollide("dirt_2", (dirt2) => {
             onUpdate(() => {
                 if (isKeyPressed("s") && player.isOverlapping(dirt2)) {
                     if (STATE.shovel_item.collected && !STATE.dirt_2) {
-                        play("dig_sound", {volume: 5})
+                        play("dig_sound", { volume: 5 })
                         // text
                         const flowertextbg = add([
                             rect(48, 8),
@@ -345,10 +357,10 @@ export default function (STATE) {
                     }
                 }
             })
-    
+
         })
-    
-    
+
+
         if (!STATE.dirt_3) {
             const dirtitem = add([
                 sprite("dirt"),
@@ -359,12 +371,12 @@ export default function (STATE) {
                 "dirt_3"
             ])
         }
-    
+
         player.onCollide("dirt_3", (dirt3) => {
             onUpdate(() => {
                 if (isKeyPressed("s") && player.isOverlapping(dirt3)) {
                     if (STATE.shovel_item.collected && !STATE.dirt_3) {
-                        play("dig_sound", {volume: 5})
+                        play("dig_sound", { volume: 5 })
                         // text
                         const flowertextbg = add([
                             rect(48, 8),
@@ -396,17 +408,17 @@ export default function (STATE) {
                 }
             })
         })
-    
-    
+
+
         //checks if you get flowers to get to final cutscene
         onUpdate(() => {
             console.log("final cutscene")
             if (STATE.flowers.length > 2) {
-    
+
                 // wait(3, () => {
                 //     go("ending", STATE)
                 // })
-    
+
                 const cutscene = add([
                     sprite("warp_cutscene", {
                         // anim: "op",
@@ -415,7 +427,7 @@ export default function (STATE) {
                     z(20)
                     // animate(),
                 ])
-    
+
                 cutscene.play("waaarp", {
                     loop: false,
                     onEnd: () => {
@@ -423,13 +435,13 @@ export default function (STATE) {
                         go("ending", STATE);
                     }
                 });
-    
+
             }
         })
-    
 
 
-    })    
+
+    })
 
 
 

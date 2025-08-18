@@ -103,9 +103,19 @@ export default function (STATE) {
         animate()
     ]);
 
-    onKeyPress("d", () => {
+    onKeyPress(["a", "d"], (key) => {
         player.play("r_run")
+        player.flipX = key == "a"
     })
+
+    onKeyRelease(["a", "d"], (key) => {
+        player.play("r_idle")
+        player.flipX = key == "a"
+    })
+
+    // onKeyPress("d", () => {
+    //     player.play("r_run")
+    // })
     onKeyDown("d", () => {
         player.move(SPEED, 0);
 
@@ -114,19 +124,19 @@ export default function (STATE) {
             go("sectionunderground", STATE);
         }
     });
-    onKeyRelease("d", () => {
-        player.play("r_idle")
-    })
+    // onKeyRelease("d", () => {
+    //     player.play("r_idle")
+    // })
 
-    onKeyPress("a", () => {
-        player.play("l_run")
-    })
+    // onKeyPress("a", () => {
+    //     player.play("l_run")
+    // })
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
     });
-    onKeyRelease("a", () => {
-        player.play("l_idle")
-    })
+    // onKeyRelease("a", () => {
+    //     player.play("l_idle")
+    // })
 
     onKeyPress("w", () => {
         // if( player.isGrounded()) {
@@ -135,11 +145,11 @@ export default function (STATE) {
         play("jump_sound", {volume: 2})
 
         player.doubleJump(330)
-        player.play("jump")
+        // player.play("jump")
     });
-    onKeyRelease("w", () => {
-        player.play("l_idle")
-    })
+    // onKeyRelease("w", () => {
+    //     player.play("l_idle")
+    // })
 
     // adding items =======================================
     if (!STATE.cave_flower) {

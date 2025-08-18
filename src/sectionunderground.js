@@ -133,9 +133,9 @@ export default function (STATE) {
 
     add([
         sprite("wind", {
-            anim:"wind"
+            anim: "wind"
         }),
-        pos(0,32),
+        pos(0, 32),
         animate()
     ])
 
@@ -143,8 +143,8 @@ export default function (STATE) {
 
     // adding player ======================================
     const player = add([
-        sprite("player_animation",{
-            anim:"r_idle"
+        sprite("player_animation", {
+            anim: "r_idle"
         }),
         pos(112, 96),
         body(),
@@ -153,41 +153,51 @@ export default function (STATE) {
         animate()
     ]);
 
-    onKeyPress("d", () => {
+    onKeyPress(["a", "d"], (key) => {
         player.play("r_run")
+        player.flipX = key == "a"
     })
+
+    onKeyRelease(["a", "d"], (key) => {
+        player.play("r_idle")
+        player.flipX = key == "a"
+    })
+
+    // onKeyPress("d", () => {
+    //     player.play("r_run")
+    // })
     onKeyDown("d", () => {
         player.move(SPEED, 0);
     });
-    onKeyRelease("d", () => {
-        player.play("r_idle")
-    })
+    // onKeyRelease("d", () => {
+    //     player.play("r_idle")
+    // })
 
-    onKeyPress("a", () => {
-        player.play("l_run")
-    })
+    // onKeyPress("a", () => {
+    //     player.play("l_run")
+    // })
     onKeyDown("a", () => {
         player.move(-SPEED, 0);
         if (player.pos.x < 16) {
             go("sectionflowercave", STATE);
         }
     });
-    onKeyRelease("a", () => {
-        player.play("l_idle")
-    })
+    // onKeyRelease("a", () => {
+    //     player.play("l_idle")
+    // })
 
     onKeyPress("w", () => {
-        play("jump_sound", {volume: 2})
+        play("jump_sound", { volume: 2 })
 
         if (player.pos.x > 416 && player.pos.x < 432) {
             go("sectionholes", STATE);
         }
         player.doubleJump(330)
-        player.play("jump")
+        // player.play("jump")
     });
-    onKeyRelease("w", () => {
-        player.play("r_idle")
-    })
+    // onKeyRelease("w", () => {
+    //     player.play("r_idle")
+    // })
 
 
     // camera =====================================
@@ -222,7 +232,7 @@ export default function (STATE) {
     }
 
     player.onCollide("scissor_item", (scissor) => {
-        play("collect_sound", {volume: 5})
+        play("collect_sound", { volume: 5 })
         // text
         const textbg = add([
             rect(160, 8),
@@ -232,7 +242,7 @@ export default function (STATE) {
         const found = add([
             text("found shears. press space to cut vines", {
                 size: 8,
-                font:"font"
+                font: "font"
             }),
             pos(192, 80),
             color(0, 0, 0)
@@ -263,7 +273,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("space") && player.isColliding(vine1)) {
                 if (STATE.scissor_item.collected && !STATE.vine_1) {
-                    play("snip_sound", {volume: 5})
+                    play("snip_sound", { volume: 5 })
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -273,7 +283,7 @@ export default function (STATE) {
                     const found = add([
                         text("snip", {
                             size: 8,
-                            font:"font"
+                            font: "font"
                         }),
                         pos(80, 32),
                         color(0, 0, 0)
@@ -311,7 +321,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("space") && player.isColliding(vine2)) {
                 if (STATE.scissor_item.collected && !STATE.vine_2) {
-                    play("snip_sound", {volume: 5})
+                    play("snip_sound", { volume: 5 })
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -321,7 +331,7 @@ export default function (STATE) {
                     const found = add([
                         text("snip", {
                             size: 8,
-                            font:"font"
+                            font: "font"
                         }),
                         pos(80, 48),
                         color(0, 0, 0)
@@ -359,7 +369,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("space") && player.isColliding(vine3)) {
                 if (STATE.scissor_item.collected && !STATE.vine_3) {
-                    play("snip_sound", {volume: 5})
+                    play("snip_sound", { volume: 5 })
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -369,7 +379,7 @@ export default function (STATE) {
                     const found = add([
                         text("snip", {
                             size: 8,
-                            font:"font"
+                            font: "font"
                         }),
                         pos(80, 64),
                         color(0, 0, 0)
@@ -407,7 +417,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("space") && player.isColliding(vine4)) {
                 if (STATE.scissor_item.collected && !STATE.vine_4) {
-                    play("snip_sound", {volume: 5})
+                    play("snip_sound", { volume: 5 })
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -417,7 +427,7 @@ export default function (STATE) {
                     const found = add([
                         text("snip", {
                             size: 8,
-                            font:"font"
+                            font: "font"
                         }),
                         pos(80, 80),
                         color(0, 0, 0)
@@ -455,7 +465,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("space") && player.isColliding(vine5)) {
                 if (STATE.scissor_item.collected && !STATE.vine_5) {
-                    play("snip_sound", {volume: 5})
+                    play("snip_sound", { volume: 5 })
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -465,7 +475,7 @@ export default function (STATE) {
                     const found = add([
                         text("snip", {
                             size: 8,
-                            font:"font"
+                            font: "font"
                         }),
                         pos(80, 96),
                         color(0, 0, 0)
@@ -506,7 +516,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("space") && player.isColliding(vine6)) {
                 if (STATE.scissor_item.collected && !STATE.vine_6) {
-                    play("snip_sound", {volume: 5})
+                    play("snip_sound", { volume: 5 })
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -516,7 +526,7 @@ export default function (STATE) {
                     const found = add([
                         text("snip", {
                             size: 8,
-                            font:"font"
+                            font: "font"
                         }),
                         pos(320, 32),
                         color(0, 0, 0)
@@ -554,7 +564,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("space") && player.isColliding(vine7)) {
                 if (STATE.scissor_item.collected && !STATE.vine_7) {
-                    play("snip_sound", {volume: 5})
+                    play("snip_sound", { volume: 5 })
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -564,7 +574,7 @@ export default function (STATE) {
                     const found = add([
                         text("snip", {
                             size: 8,
-                            font:"font"
+                            font: "font"
                         }),
                         pos(320, 48),
                         color(0, 0, 0)
@@ -602,7 +612,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("space") && player.isColliding(vine8)) {
                 if (STATE.scissor_item.collected && !STATE.vine_8) {
-                    play("snip_sound", {volume: 5})
+                    play("snip_sound", { volume: 5 })
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -612,7 +622,7 @@ export default function (STATE) {
                     const found = add([
                         text("snip", {
                             size: 8,
-                            font:"font"
+                            font: "font"
                         }),
                         pos(320, 64),
                         color(0, 0, 0)
@@ -650,7 +660,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("space") && player.isColliding(vine9)) {
                 if (STATE.scissor_item.collected && !STATE.vine_9) {
-                    play("snip_sound", {volume: 5})
+                    play("snip_sound", { volume: 5 })
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -660,7 +670,7 @@ export default function (STATE) {
                     const found = add([
                         text("snip", {
                             size: 8,
-                            font:"font"
+                            font: "font"
                         }),
                         pos(320, 80),
                         color(0, 0, 0)
@@ -698,7 +708,7 @@ export default function (STATE) {
         onUpdate(() => {
             if (isKeyPressed("space") && player.isColliding(vine10)) {
                 if (STATE.scissor_item.collected && !STATE.vine_10) {
-                    play("snip_sound", {volume: 5})
+                    play("snip_sound", { volume: 5 })
                     // text
                     const textbg = add([
                         rect(16, 8),
@@ -708,7 +718,7 @@ export default function (STATE) {
                     const found = add([
                         text("snip", {
                             size: 8,
-                            font:"font"
+                            font: "font"
                         }),
                         pos(320, 96),
                         color(0, 0, 0)
