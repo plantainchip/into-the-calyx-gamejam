@@ -1,27 +1,11 @@
-# Folder structure
+# In the Calyx [ b1tjam 2 - game jam entry ]
 
-- `src` - source code for your kaplay project
-- `dist` - distribution folder, contains your index.html, built js bundle and static assets
+This is my entry for the B1tJam game jam with the theme 'Bloom'
 
+Play my game over on [https://plantainchip.itch.io/conveyor-belt-milk](https://plantainchip.itch.io/conveyor-belt-milk) 
 
-## Development
+You went into the garden and suddenly an eyeball entity appears from the sky demanding flowers. 
+What will you do? 
+There are 3 hidden flowers outside. 
+Can you find them all?
 
-```sh
-$ npm run dev
-```
-
-will start a dev server at http://localhost:8000
-
-## Distribution
-
-```sh
-$ npm run build
-```
-
-will build your js files into `dist/`
-
-```sh
-$ npm run zip
-```
-
-will build your game and package into a .zip file, you can upload to your server or itch.io / newground etc.
