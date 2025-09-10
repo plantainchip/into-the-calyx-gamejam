@@ -2,7 +2,7 @@
 
 This is my entry for the B1tJam game jam with the theme 'Bloom'
 
-Play my game over on [https://plantainchip.itch.io/conveyor-belt-milk](https://plantainchip.itch.io/conveyor-belt-milk) 
+Play my game over on [https://plantainchip.itch.io/in-the-calyx](https://plantainchip.itch.io/in-the-calyx) 
 
 You went into the garden and suddenly an eyeball entity appears from the sky demanding flowers. 
 What will you do? 
