@@ -9,3 +9,4 @@ What will you do?
 There are 3 hidden flowers outside. 
 Can you find them all?
 
+Note: The collisions and movements are still buggy
